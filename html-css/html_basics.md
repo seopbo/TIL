@@ -21,7 +21,7 @@ HTML 문서는 아래와 같은 기본 뼈대를 두고 만들어진다. 어떤 
 <html>
 <head>
 	<title></title>
-    <style></style>
+	<style></style>
 </head>
 <body>
 </body>
