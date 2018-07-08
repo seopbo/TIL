@@ -1,10 +1,15 @@
 # HTML basics
-### Notion
+### HTML과 webpage를 구성하는 요소들
 **HTML (HyperText Markup Language)** 은 기본적으로 문서를 구조화해주는 지극히 간단한 언어, 웹사이트를 만드는 데에 있어서 아래와 같은 요소들이 모여 하나의 웹페이지를 구성하게된다. 요소와 역할은 아래와 같다.
 
 - html : language로 치면 noun, 뼈대를 잡는다.
 - css : language로 치면 adjective, noun을 꾸민다.
 - javascript : language로 치면 verb, webpage에 logic을 넣거나 interactivity를 부여한다.
+
+### DOM
+**DOM (Document Object Model)** 에 대한 설명은 아래의 link를 참고
+
+- link : https://developer.mozilla.org/ko/docs/About_the_Document_Object_Model
 
 ### boilerplate
 HTML 문서는 아래와 같은 기본 뼈대를 두고 만들어진다. 어떤 HTML 문서이든지 간에 아래의 양식은 항상 default
