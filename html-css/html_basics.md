@@ -14,7 +14,7 @@
 ### boilerplate
 HTML 문서는 아래와 같은 기본 뼈대를 두고 만들어진다. 어떤 HTML 문서이든지 간에 아래의 양식은 항상 default
 
-- head : `<head>` tag에는 webpage의 header 정보를 넣는다. 아래의 두 가지가 tag를 활용한다.
+- head : `<head>` tag에는 webpage의 header 정보를 넣는다. 아래의 두 가지 tag를 활용한다.
 
 	- title : `<title>` tag에는 웹페이지의 이름을 결정한다. browser 상에서 tab에 표시된다.
 	- style : `<style>` tag에는 `<body>` tag안의 element들의 style을 지정한다. (css)
