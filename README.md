@@ -10,3 +10,4 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 ---
 ### html-css
 ***The Web Developer Bootcamp (Udemy), Webn (OpenTutorials)*** 를 공부한 내용을 정리
+- [html-basic.md](https://github.com/aisolab/TIL/blob/master/html-css/html_basics.md)
