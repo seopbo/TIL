@@ -40,9 +40,18 @@ HTML 문서는 아래와 같은 기본 뼈대를 두고 만들어진다. 어떤 
 - paragraph : `<p>`tag를 활용하여 paragraph를 명시적으로 지정가능
 - unordered list : `<ul>`tag를 활용하여, unordered list를 명시한 뒤, `<li>`tag를 활용하여 list를 만든다.
 
-	```xml
+```xml
 <ul>
 	<li></li>
     <li></li>
 </ul>
-	```
+```
+
+- ordered list : `<ol>`tag를 활용하여, ordered list를 명시한 뒤, `<li>`tag를 활용하여 list를 만든다.
+
+```xml
+<ol>
+	<li></li>
+    <li></li>
+</ol>
+```
