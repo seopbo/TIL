@@ -11,7 +11,7 @@
 
 - link : https://developer.mozilla.org/ko/docs/About_the_Document_Object_Model
 
-### boilerplate
+### Boilerplate
 HTML 문서는 아래와 같은 기본 뼈대를 두고 만들어진다. 어떤 HTML 문서이든지 간에 아래의 양식은 항상 default
 
 - head : `<head>` tag에는 webpage의 header 정보를 넣는다. 아래의 두 가지 tag를 활용한다.
@@ -32,3 +32,8 @@ HTML 문서는 아래와 같은 기본 뼈대를 두고 만들어진다. 어떤 
 </body>
 </html>
 ```
+
+### Basic tags
+`<Body>` 안에는 다음과 같은 tag를 사용하여, element를 만들 수 있다.
+
+- heading : `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`를 활용하여 제목, 소제목 등을 지정
