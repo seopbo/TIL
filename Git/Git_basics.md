@@ -30,6 +30,7 @@ git config --global user.email 'bsk0130@gmail.com' # 자신의 email
 	- 하나의 작업당 하나의 version을 하나 만드는 것이 rule
 
 - `git log` : commit history를 조회, 여러 옵션을 줄 수 있으나 다음의 아래가 유용
-	- `git log -p` : version간의 차이를 확인할 수 있음
+	- `git log -p` : 전체 version간의 차이를 확인할 수 있음
+	- `git log -p -n` : 최근 n개의 version간의 변경점을 확인
 
 - `git diff` : 
