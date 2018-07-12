@@ -5,7 +5,8 @@ Git에 관한 개념에 대한 자세한 설명은 아래의 Reference를 참고
 	- https://www.rlee.ai/apt/git
 	- https://github.com/Gyubin/TIL/blob/master/ETC/git_gitflow.md
 	- https://opentutorials.org/module/2676
----
+- - -
+
 ### Basic commands
 - `git config` : git의 configuration을 설정, 예를 들면 아래처럼 version control을 하는 주체의 정보를 설정할 수 있다.
 
@@ -13,7 +14,7 @@ Git에 관한 개념에 대한 자세한 설명은 아래의 Reference를 참고
 # example
 git config --global user.name 'aisolab' # 자신의 nickname
 git config --global user.email 'bsk0130@gmail.com' # 자신의 email
-```
+	```
 
 - `git init` : version control을 할 project의 directory로 이동 후 입력
 	- 해당 directory 밑에 **.git** directory가 생성되며, 이 directory는 version control을 위한 여러 파일을 담고 있음
