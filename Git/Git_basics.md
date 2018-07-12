@@ -16,7 +16,7 @@ git config --global user.name 'aisolab' # 자신의 nickname
 git config --global user.email 'bsk0130@gmail.com' # 자신의 email
 ```
 * `git init` : version control을 할 project의 directory로 이동 후 입력
-	+ 해당 directory 밑에 **.git** directory가 생성되며, 이 directory는 version control을 위한 여러 파일을 담고 있음
+	+ 해당 directory 밑에 **.git** directory가 생성되며, ***이 directory는 version control을 위한 여러 파일을 담고 있음***
 
 * `git status` : project의 directory의 상태확인
 
@@ -48,7 +48,7 @@ Date:   Thu Jul 12 17:24:38 2018 +0900
     1 # commit message
 ```
 
-* `git diff` : 최근 2개 version의 source상의 변경점을 확인, +++에 해당하는 것이 더 최신의 version
+* `git diff` : 최근 2개 version의 source상의 변경점을 확인, +++에 해당하는 것이 더 최신의 version, ***commit을 하기전에 시행한 작업에 대해서 변경점을 확인가능한 용도로도 사용할 수 있음***
 
 	+ `git diff commit_id1 commit_id2` : commit_id1에 해당하는 version의 source와 commit_id2에 해당하는 version의 source상의 변경점을 확인
 
