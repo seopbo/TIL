@@ -30,7 +30,20 @@ git config --global user.email 'bsk0130@gmail.com' # 자신의 email
 	- 하나의 작업당 하나의 version을 하나 만드는 것이 rule
 
 - `git log` : commit history를 조회, 여러 옵션을 줄 수 있으나 다음의 아래가 유용
-	- `git log -p` : 전체 version간의 차이를 확인할 수 있음
-	- `git log -p -n` : 최근 n개의 version간의 변경점을 확인
 
-- `git diff` : 
+```bash
+#git log 실행한 결과 (example)
+
+commit 1457925822c829fdd998a17ac3860fbae61f44d6 # commit id
+Author: aisolab <bsk0130@gmail.com> # user.name user.email
+Date:   Thu Jul 12 17:24:38 2018 +0900
+
+    1 # commit message
+```  
+
+	- `git log commit_id` : commit id (commit message에 해당하는 version을 가리키는 id)를 입력하면 해당 version이전부터 해당 version가지의 commit message를 확인할 수 있음
+	- `git log -p` : 전체 version간의 source 상의 변경점을 확인할 수 있음
+	- `git log -p -n` : 최근 n개의 version간의 source 상의 변경점을 확인할 수 있음
+
+- `git diff` : 최근 2개 version의 source상의 변경점을 확인, +++에 해당하는 것이 더 최신의 version
+	- `git diff commit_id1 commit_id2` :
