@@ -1,10 +1,9 @@
 # Git basics
-Git에 관한 개념에 대한 자세한 설명은 아래의 Reference를 참고, 여기에서는 각 명령어들의 사용법과 flow만 다룸
+[지옥에서 온 Git](https://opentutorials.org/module/2676)의 내용을 command 위주로 정리, 그 외 참고한 Reference는 아래와 같음.
 
 * Reference
 	+ https://www.rlee.ai/apt/git
 	+ https://github.com/Gyubin/TIL/blob/master/ETC/git_gitflow.md
-	+ https://opentutorials.org/module/2676
 ---
 
 ### Basic commands
