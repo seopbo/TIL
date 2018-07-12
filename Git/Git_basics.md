@@ -43,5 +43,6 @@ Date:   Thu Jul 12 17:24:38 2018 +0900
 ```
 
 * `git diff` : 최근 2개 version의 source상의 변경점을 확인, +++에 해당하는 것이 더 최신의 version
-	+ `git diff commit_id1 commit_id2` :
+	+ `git diff commit_id1 commit_id2` : commit_id1에 해당하는 version의 source와 commit_id2에 해당하는 version의 source상의 변경점을 확인
+		- commit_id2에 최신의 version에 해당하는 commit_id를 써야 +++에 최신 version의 source의 변경점이 나타ㅏㅁ
 
