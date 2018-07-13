@@ -54,3 +54,9 @@ git remote add origin git@github.com:user_name/repository_name.git
 # 한번 아래의 명령어로 연결해놓으면 그 다음은 git push로 그냥 활용
 git push -u origin master
 ```
+
+- remote repository의 내용을 local repository로 가져오기
+
+```bash
+git pull
+```
