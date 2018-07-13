@@ -52,8 +52,6 @@ git config --global user.email 'bsk0130@gmail.com' # 자신의 email
 
 		- **.git/objects** directory에 생성되는 object는 모두 **commit**, **blob**, **tree** 중 하나
 
-
-
 ```bash
 #git log 실행한 결과 (example)
 commit 1457925822c829fdd998a17ac3860fbae61f44d6 # commit id (object id)
