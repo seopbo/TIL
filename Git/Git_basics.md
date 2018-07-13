@@ -16,14 +16,14 @@ git config --global user.name 'aisolab' # 자신의 nickname
 git config --global user.email 'bsk0130@gmail.com' # 자신의 email
 ```
 
-* `git init` : version control을 할 project의 directory로 이동 후 입력
+* `git init` : version control을 할 project의 directory로 이동 후 입력 (working directory로 만들기)
 	+ 해당 directory 밑에 **.git** directory가 생성되며, ***이 directory는 version control을 위한 여러 파일을 담고 있음***
 
 * `git status` : project의 directory의 상태확인
 
-	+ 어떤 파일을 git이 version control을 하는 지 확인 가능하며, **stage area (ready to commit)** 에 어떤 파일이 있는 지 확인 가능
+	+ 어떤 파일을 git이 version control을 하는 지 확인 가능하며, **staging area (ready to commit, index)** 에 어떤 파일이 있는 지 확인 가능
 
-* `git add` : version control을 할 project의 directory 내의 파일들을 추가하여 해당 파일을 git이 tracking, 또는 이미 변경된 파일의 경우 **stage area (ready to commit)** 에 넣는 역할을 함
+* `git add` : version control을 할 project의 directory 내의 파일들을 추가하여 해당 파일을 git이 tracking, 또는 이미 변경된 파일의 경우 **staging area (ready to commit, index)** 에 넣는 역할을 함
 
 	+ 이미 작업한 내용들 중에서 선택적으로 commit을 하여, version을 만들 수 있음
 
