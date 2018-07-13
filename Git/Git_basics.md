@@ -2,7 +2,7 @@
 [지옥에서 온 Git](https://opentutorials.org/module/2676)의 내용을 command 위주로 정리, 그 외 참고한 Reference는 아래와 같음.
 
 * Reference
-	*  
+	* https://git-scm.com/
 	+ https://www.rlee.ai/apt/git
 	+ https://github.com/Gyubin/TIL/blob/master/ETC/git_gitflow.md
 ---
