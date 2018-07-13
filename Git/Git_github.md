@@ -23,17 +23,17 @@ Github에서 remote repository를 생성하면, 두 가지 방식으로 Github�
 
 ```bash
 # user_name : Github에서의 유저이름
-# repository_name : Remote repository의 이름
+# repository_name : remote repository의 이름
 git clone git@github.com:user_name/repository_name.git
 ```
 
-* Local에서 repository를 생성하고, remote repository와 연동 (이미 Local repository에서 version control을 하고 있는 것을 Remote repository로 backup 할 때 활용)
+* Local에서 repository를 생성하고, remote repository와 연동 (이미 local repository에서 version control을 하고 있는 것을 remote repository로 backup 할 때 활용)
 
 	1. project directory를 `git init` 으로 version control 선언 (working directory 화)
 
-		- 이미 version control 하고 있던 project라면 위 과정 불필요
+		- ***이미 version control 하고 있던 project라면 위 과정 불필요***
 
-	2. Github에 project directory의 이름과 같은 이름으로 Remote repository 생성, 그 후 아래와 같이
+	2. Github에 project directory의 이름과 같은 이름으로 remote repository 생성, 그 후 아래와 같이
 
 ```bash
 # origin은 뒷 부분 (remote repository의 alias)
@@ -47,9 +47,10 @@ git remote add origin git@github.com:user_name/repository_name.git
 
 		- local repository를 기준으로 하기 때문에, ***"local repository를 remote repository로 push한다."*** 라고 통칭함
 
+		- commit하여 version을 만든 게 있을 때 쓰는 것
+
 ```bash
 # origin에 해당하는 remote repository의 master branch와 local repository에서 checkout한 branch를 연결
 # 한번 아래의 명령어로 연결해놓으면 그 다음은 git push로 그냥 활용
 git push -u origin master
-
 ```
