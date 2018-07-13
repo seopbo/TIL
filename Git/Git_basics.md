@@ -38,6 +38,16 @@ git config --global user.email 'bsk0130@gmail.com' # 자신의 email
 
 	+ `git log commit_id` : commit_id (commit message에 해당하는 version을 가리키는 id)를 입력하면 해당 version이전부터 해당 version가지의 commit message를 확인할 수 있음
 
+		- Git에서는 **.git/objects** directory에서 object의 형태 (사실상 파일)로 version control을 하는 데에 있어서 필요한 내역을 관리
+
+		- object id가 파일 내용을 기반으로 **sha1 hash** 방식으로 암호화되어 생성되고, 이를 이름으로하는 object가 생성됨. `git add`, `git commit` 등의 command가 **.git/objects** directory에 발생시키는 내용은 아래와 같음
+
+		- `git add` : **.git/objects** directory에 파일의 내용을 담은 object를 추가함, 이를 **blob** 이라고함
+
+		- `git commit` : **.git/objects** directory에 parent에 해당하는 version의 object id와 tree에 해당하는 version의 object id를 담은 object를 추가함, 이를 **commit** 이라고함
+
+		- **.git/objects** directory에 생성되는 object는 모두 **commit**, **blob**, **tree** 중 하나
+
 	+ `git log -p` : 전체 version간의 source 상의 변경점을 확인할 수 있음
 
 	+ `git log -p -n` : 최근 n개의 version간의 source 상의 변경점을 확인할 수 있음
