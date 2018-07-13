@@ -50,7 +50,7 @@ git config --global user.email 'bsk0130@gmail.com' # 자신의 email
 
 		- `git commit` : **.git/objects** directory에 **parent** 에 해당하는 version의 object id와 **tree** 에 해당하는 version의 object id를 담은 object를 추가함, 이를 **commit** object라고함
 
-		- **.git/objects** directory에 생성되는 object는 모두 **commit**, **blob**, **tree** 중 하나
+		- **.git/objects** directory에 생성되는 object는 모두 **commit** object, **blob** object, **tree** object 중 하나
 
 			- **commit** object는 **tree** object의 object id와 **parent** object의 object id를 기록
 
@@ -88,3 +88,5 @@ Date:   Thu Jul 12 17:24:38 2018 +0900
 	+ `git revert commmit_id` : commit_id에 가장 최근 commit_id를 넣음, 중간시점의 commit_id를 넣으면 conflict 발생
 
 	+ ***remote repository를 활용할 때 사용할 것***, remote repository의 시점도 과거로 돌아감
+
+### Branching commands
