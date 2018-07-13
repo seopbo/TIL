@@ -46,11 +46,17 @@ git config --global user.email 'bsk0130@gmail.com' # 자신의 email
 
 		- object id가 파일 내용을 기반으로 **sha1 hash** 방식으로 암호화되어 생성되고, 이를 이름으로하는 object가 생성됨. `git add`, `git commit` 등의 command가 **.git/objects** directory에 발생시키는 내용은 아래와 같음
 
-		- `git add` : **.git/objects** directory에 파일의 내용을 담은 object를 추가함, 이를 **blob** 이라고함
+		- `git add` : **.git/objects** directory에 파일의 내용을 담은 object를 추가함, 이를 **blob** object라고함
 
-		- `git commit` : **.git/objects** directory에 parent에 해당하는 version의 object id와 tree에 해당하는 version의 object id를 담은 object를 추가함, 이를 **commit** 이라고함
+		- `git commit` : **.git/objects** directory에 **parent** 에 해당하는 version의 object id와 **tree** 에 해당하는 version의 object id를 담은 object를 추가함, 이를 **commit** object라고함
 
 		- **.git/objects** directory에 생성되는 object는 모두 **commit**, **blob**, **tree** 중 하나
+
+			- **commit** object는 **tree** object의 object id와 **parent** object의 object id를 기록
+
+			- **blob** object는 실제 파일의 내용을 기록
+
+			- **tree** object는 **blob** object의 object id를 기록
 
 ```bash
 #git log 실행한 결과 (example)
