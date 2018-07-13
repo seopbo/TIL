@@ -126,6 +126,45 @@ Date:   Thu Jul 12 17:24:38 2018 +0900
 
 	+ `git merge branch_name2` : ***(Head가 branch_name1인 상태에서)*** branch_name2의 source 변경점들을 branch_name1로 merge
 
-		- master가 default branch이므로, Head가 master인 상태에서 `git merge master branch_name` 하면 branch_name에 해당하는 branch의 source 변경점들을 master로 merge
+		- template : master가 default branch이므로, Head가 master인 상태에서 `git merge master branch_name` 하면 branch_name에 해당하는 branch의 source 변경점들을 master로 merge
 
+		- ***서로 다른 branch에서 같은 파일의 같은 부분을 수정하면? Conflict!***
+
+			- 이 경우 merge시 editor가 나타나게되며 사용자가 알아서 잘 수정!
+
+		- merging이 끝나면 `git branch -d branch_name2` 로 branch_name2에 해당하는 branch를 삭제
+
+```bash
+<<<<<<< HEAD # checkout한 branch (eg. master branch)
+hi! master 
+======= # branch의 경계, 이 예제에서는 서로 다른 브랜치에서 같은 파일의 같은 부분 (hi! 뒷 부분) 수정해서 충돌
+hi! develop
+>>>>>>> develop # checkout한 branch로 merge되는 branch (eg. develop branch)
+```
+```bash
+*   commit 100c731567079c22620071ed3ece231a0f6a9531 (HEAD -> master)
+|\  Merge: 8dcace3 2e33343
+| | Author: aisolab <bsk0130@gmail.com>
+| | Date:   Fri Jul 13 16:25:12 2018 +0900
+| |
+| |     Merge branch 'develop' # 위의 code block에서 master 부분을 지우고 git add, git commit
+| |
+| * commit 2e3334326fc883f8cd3c98b4dfaa8e4d7e180b79 (develop)
+| | Author: aisolab <bsk0130@gmail.com>
+| | Date:   Fri Jul 13 16:19:46 2018 +0900
+| |
+| |     develop v2
+| |
+* | commit 8dcace3636378e29a9d5b01f2fe89cbdec1dbd78
+|/  Author: aisolab <bsk0130@gmail.com>
+|   Date:   Fri Jul 13 16:20:16 2018 +0900
+|
+|       master v2
+|
+* commit ccd394d62cb6fcc4a7b2643a2dcbc615d9f85622
+  Author: aisolab <bsk0130@gmail.com>
+  Date:   Fri Jul 13 16:19:05 2018 +0900
+
+      master v1
+```
 
