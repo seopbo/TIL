@@ -2,6 +2,7 @@
 [지옥에서 온 Git](https://opentutorials.org/module/2676)의 내용을 command 위주로 정리, 그 외 참고한 Reference는 아래와 같음.
 
 * Reference
+	*  
 	+ https://www.rlee.ai/apt/git
 	+ https://github.com/Gyubin/TIL/blob/master/ETC/git_gitflow.md
 ---
@@ -33,7 +34,7 @@ git config --global user.email 'bsk0130@gmail.com' # 자신의 email
 
 	+ 하나의 작업당 하나의 version을 하나 만드는 것이 rule
 
-#### Checking the changes
+#### Checking the changes in commit history
 * `git log` : commit history를 조회, 여러 옵션을 줄 수 있으나 다음의 아래가 유용
 
 	+ `git log commit_id` : commit_id (commit message에 해당하는 version을 가리키는 id)를 입력하면 해당 version이전부터 해당 version가지의 commit message를 확인할 수 있음
@@ -72,7 +73,7 @@ Date:   Thu Jul 12 17:24:38 2018 +0900
 	
 		-  이전 version이 있고, 어떤 작업을 했을 때, `git add` 하기전에 변경점을 확인가능
 
-	+ `git diff commit_id1 commit_id2` : commit_id1에 해당하는 version의 source와 commit_id2에 해당하는 version의 source상의 변경점을 확인
+	+ `git diff commit_id1..commit_id2` : commit_id1에 해당하는 version의 source와 commit_id2에 해당하는 version의 source간의 변경점을 확인
 
 		- commit_id2에 최신의 version에 해당하는 commit_id를 써야 +++에 최신 version의 source의 변경점이 기록됨
 
@@ -90,3 +91,41 @@ Date:   Thu Jul 12 17:24:38 2018 +0900
 	+ ***remote repository를 활용할 때 사용할 것***, remote repository의 시점도 과거로 돌아감
 
 ### Branching commands
+#### Branching 
+* `git branch` : branch의 목록을 확인하는 command, option을 주어 여러가지로 방법으로 사용
+
+	+ `git branch branch_name` : branch_name에 해당하는 branch를 생성
+
+	+ `git branch -d branch_name` : branch_name에 해당하는 branch를 삭제
+
+	+ `git branch -D branch_name` : 병합하지않은 branch_name에 해당하는 branch를 강제삭제
+
+* `git checkout` : branch를 전환하는 command, 아래처럼 사용
+
+	+ `git checkout branch_name` : branch_name에 해당하는 branch로 전환
+
+	+ ` git checkout -b branch_name` : branch_name에 해당하는 branch를 생성하고, 해당 branch로 전환
+
+#### Checking the changes between branches
+* `git log --branches` : branch들의 commit history를 확인, Head가 가리키는 것이 현재 머물고 있는 branch, option을 주어 여러가지 방법으로 사용
+
+	+ `git log --branches --graph --decorate` : 각각의 branch들의 commit history에 graph option을 주어 확인하기 편하게
+
+	+ `git log --branches --graph -p` : 각각의 branch들의 commit history에서 source상의 변경점들을 확인
+
+* `git log branch_name1..branch_name2` : branch 간의 변경점 확인, branch_name2에 기준으로부터 변화한 대상의 branch의 이름을 넣는 것이 유용, option을 주어 여러가지 방법으로 사용
+
+	+ `git log branch_name1..branch_name2 -p` : branch 간의 source상의 변경점을 확인
+
+* `git diff branch_name1..branch_name2` : branch_name1에 해당하는 branch의 최신 version의 source와 branch_name2에 해당하는 branch의 최신 version간의 source상의 변경점을 확인
+
+#### Merging
+* `git merge` : merge는 source를 합치는 기준이 되는 branch로 checkout한 뒤, 해당 branch에서 아래와 같은 command로 merge
+
+	+ `git checkout branch_name1` : branche_name1에 해당하는 branch로 checkout
+
+	+ `git merge branch_name2` : ***(Head가 branch_name1인 상태에서)*** branch_name2의 source 변경점들을 branch_name1로 merge
+
+		- master가 default branch이므로, Head가 master인 상태에서 `git merge master branch_name` 하면 branch_name에 해당하는 branch의 source 변경점들을 master로 merge
+
+
