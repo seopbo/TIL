@@ -14,6 +14,8 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [좋은 git commit message를 작성하기 위한 7가지 약속](http://meetup.toast.com/posts/106)
 
 ---
+### Django
+
 ### Git
 * [Git_basics.md](https://github.com/aisolab/TIL/blob/master/Git/Git_basics.md)
 
@@ -22,5 +24,9 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 ### HTML-CSS
 * [HTML_basics.md](https://github.com/aisolab/TIL/blob/master/HTML-CSS/HTML_basics.md)
 
+### Python
+
 ### Tensorflow
 * [How to simply use tf.data.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20simply%20use%20tf.data.ipynb)
+
+### Javascript
