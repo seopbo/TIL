@@ -19,3 +19,6 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 
 ### HTML-CSS
 + [HTML_basics.md](https://github.com/aisolab/TIL/blob/master/HTML-CSS/HTML_basics.md)
+
+### Tensorflow
++ [How to simply use tf.data.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20simply%20use%20tf.data.ipynb)
