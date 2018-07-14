@@ -91,6 +91,7 @@ Date:   Thu Jul 12 17:24:38 2018 +0900
 	+ ***remote repository를 활용할 때 사용할 것***, remote repository의 시점도 과거로 돌아감
 
 ### Branching commands
+local repository든지 remote repository든지 default branch는 master branch
 #### Branching 
 * `git branch` : branch의 목록을 확인하는 command, option을 주어 여러가지로 방법으로 사용
 
