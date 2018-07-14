@@ -41,17 +41,20 @@ git remote add origin git@github.com:user_name/repository_name.git
 ```
 
 #### Interlocking local repository with remote repository
-* local repository의 특정 branch의 version (commit)을 remote repository의 특정 branch로 update
+##### push
+* local repository를 기준으로 하기 때문에, ***"local repository를 remote repository로 push한다."*** 라고 통칭함
 
-	+ local repository의 master branch로 checkout한 상태에서 remote repository의 master branch로 update하는게 일반적
-
-		- local repository를 기준으로 하기 때문에, ***"local repository를 remote repository로 push한다."*** 라고 통칭함
-
-		- commit하여 version을 만든 게 있을 때 쓰는 것
+	+ local repository의 특정 branch의 version (commit)을 remote repository의 특정 branch로 push
 
 ```bash
-# origin에 해당하는 remote repository에 local repository에서 checkout한 branch를 연결
-# 한번 아래의 명령어로 연결해놓으면 그 다음은 git push로 그냥 활용
+git push origin local_branch_name:remote_branch_name
+```
+
+* 일반적으로 local repository의 master branch를 remote repository의 master branch로 push하는 게 일반적, 따라서 아래와 같이 설정
+
+```bash
+# local repository의 master branch를 remote repository의 master branch로 push하는 경우에는
+# 한번 아래의 명령어로 연결해놓으면 그 다음은 git push로 그냥 활용 
 git push -u origin master
 ```
 
@@ -61,9 +64,16 @@ git push -u origin master
 git push origin branch_not_in_remote_repository
 ```
 
+##### pull
 
-- remote repository의 내용을 local repository로 가져오기
+* remote repository의 master branch를 local repository로 master branch로 가져오기
 
 ```bash
 git pull
+```
+
+* remote repository의 specific branch를 local repository의 specific branch로 가져오기
+
+```bash
+git pull origin remote_branch_name:local_branch_name
 ```
