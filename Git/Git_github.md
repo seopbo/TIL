@@ -50,10 +50,17 @@ git remote add origin git@github.com:user_name/repository_name.git
 		- commit하여 version을 만든 게 있을 때 쓰는 것
 
 ```bash
-# origin에 해당하는 remote repository의 master branch와 local repository에서 checkout한 branch를 연결
+# origin에 해당하는 remote repository에 local repository에서 checkout한 branch를 연결
 # 한번 아래의 명령어로 연결해놓으면 그 다음은 git push로 그냥 활용
 git push -u origin master
 ```
+
+* remote repository에 없는 branch를 local repository에서 만들어서 push하는 경우, remote repository에 해당 branch가 생성됨
+
+```bash
+git push origin branch_not_in_remote_repository
+```
+
 
 - remote repository의 내용을 local repository로 가져오기
 
