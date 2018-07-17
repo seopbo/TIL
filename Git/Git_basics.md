@@ -169,5 +169,15 @@ hi! develop
       master v1
 ```
 
-- `Git stash` : 추후 내용 추가
+* `git stash` : 다른 브랜치로 checkout을 해야하는데, 아직 현재 브랜치에서 작업이 끝나지 않은 경우 commit을 하기가 애매하므로, ***이 때 작업중이던 파일을 임시로 저장해두고 현재 브랜치의 상태를 마지막 커밋의 상태로 초기화하기위해 사용, 이후 작업중이던 상태로 복구가능, stack을 활용하여 구현*** , `git stash` 는 `git add` 에 의해서 version control 대상으로 추가된 파일에만 적용됨
+
+	+ `git stash save` : 현재 작업한 상태를 (`git add` 하기 전) 저장해놓고, 이전 commit으로 돌아가기, 작업한 상태를 stack에 저장
+
+	+ `git stash list` : stack에 저장되어있는 작업상태의 목록을 확인
+
+	+ `git stash apply` : stack에 저장되어있는 작업상태중 가장 위에 있는 상태를 불러옴 (`git stash list` 목록에 그대로 남아있음)
+
+	+ `git stash drop` : stack에 저장되어있는 작업상태중 가장 위에 있는 상태를 지움
+
+	+ `git stash pop` : `git stash apply` 를 하고, `git stash drop` 을 한번에 하는 명령어, stack의 pop이라 생각하면 됨
 
