@@ -84,6 +84,10 @@ Date:   Thu Jul 12 17:24:38 2018 +0900
 
 	+ ***remote repository를 활용하지 않을 때, 즉 local repository를 활용할 때만 사용할 것***, 왜냐하면 이 command는 local repository만 과거시점으로 돌리기 때문
 
+	+ `git reset` 의 여러가지 option들은 아래의 그림으로 이해!!
+
+![Alt text](https://i.imgur.com/aX2spsR.png)
+
 * `git revert` : 최신 version이 잘 못 되었을 때, 해당 version의 한 시점 과거의 것과 동일한 source인 새로운 version을 만듦, 아래와 같은 command로 활용
 
 	+ `git revert commmit_id` : commit_id에 가장 최근 commit_id를 넣음, 중간시점의 commit_id를 넣으면 conflict 발생
