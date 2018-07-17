@@ -71,7 +71,7 @@ Date:   Thu Jul 12 17:24:38 2018 +0900
 
 	+  ***commit을 하기전에 시행한 작업에 대해서 변경점을 확인가능한 용도로도 사용할 수 있음***
 	
-		-  이전 version이 있고, 어떤 작업을 했을 때, `git add` 하기전에 변경점을 확인가능
+		-  ***이전 version이 있고, 어떤 작업을 했을 때, `git add` 하기전에 변경점을 확인가능, (working directory의 내용과 staging area의 내용을 비교)***
 
 	+ `git diff commit_id1..commit_id2` : commit_id1에 해당하는 version의 source와 commit_id2에 해당하는 version의 source간의 변경점을 확인
 
