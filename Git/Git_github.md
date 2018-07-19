@@ -11,9 +11,7 @@ Remote repository로 [Github](https://github.com/)를 이용하는 방법을 정
 ### Using Github as remote repository
 #### Preliminary
 * [Github](https://github.com/) 가입
-
 	+ [SSH public key 생성](https://git-scm.com/book/ko/v1/Git-%EC%84%9C%EB%B2%84-SSH-%EA%B3%B5%EA%B0%9C%ED%82%A4-%EB%A7%8C%EB%93%A4%EA%B8%B0)
-
 	+ https://github.com/settings/keys에서 생성한 SSH public key를 등록
 
 #### Creating remote repository using Github
@@ -28,11 +26,8 @@ git clone git@github.com:user_name/repository_name.git
 ```
 
 * Local에서 repository를 생성하고, remote repository와 연동 (이미 local repository에서 version control을 하고 있는 것을 remote repository로 backup 할 때 활용)
-
 	1. project directory를 `git init` 으로 version control 선언 (working directory 화)
-
 		- ***이미 version control 하고 있던 project라면 위 과정 불필요***
-
 	2. Github에 project directory의 이름과 같은 이름으로 remote repository 생성, 그 후 아래와 같이
 
 ```bash
@@ -43,7 +38,6 @@ git remote add origin git@github.com:user_name/repository_name.git
 #### Interlocking local repository with remote repository
 ##### push
 * local repository를 기준으로 하기 때문에, ***"local repository를 remote repository로 push한다."*** 라고 통칭함
-
 	+ local repository의 특정 branch의 version (commit)을 remote repository의 특정 branch로 push
 
 ```bash
@@ -65,7 +59,6 @@ git push origin branch_not_in_remote_repository
 ```
 
 ##### pull
-
 * remote repository의 master branch를 local repository로 master branch로 가져오기
 
 ```bash
