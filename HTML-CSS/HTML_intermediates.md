@@ -15,9 +15,9 @@
 
 ```xml
 <table>
-	<thead>
-    	<tr>
-        	<th></th>
+    <thead>
+        <tr>
+            <th></th>
             <th></th>
         </tr>
     </thead>
