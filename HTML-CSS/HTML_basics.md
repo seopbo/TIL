@@ -55,6 +55,17 @@ HTML 문서는 아래와 같은 기본 뼈대를 두고 만들어진다. 어떤 
   </ol>
   ```
 
+	+ `<img>` : src attibute를 이용하여 image를 넣을 수 있다.
+
+	```xml
+	<img src = 'image url'>
+	```
+	
+	+ `<a>` : href attribute를 이용하여 linkㅇ를 생성할 수 있다.
+
+	```xml
+	<a href = 'link url'>link url</a>
+	```
 ### Generic container
 * `<div>`  : 
 
