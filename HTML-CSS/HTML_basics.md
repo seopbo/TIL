@@ -67,6 +67,13 @@ HTML 문서는 아래와 같은 기본 뼈대를 두고 만들어진다. 어떤 
 	<a href = 'link url'>link url</a>
 	```
 ### Generic container
-* `<div>`  : 
+`<div>` 와 `<span>` 은 둘다 Generic conratiner로 customized structure를 만드는데 사용한다. (eg. element들을 모아서 일괄적으로 css 적용)
 
-* `<span>` :  
+Reference : <http://www.clearboth.org/22-generic-containers-8212-the-div-and/>
+
+* `<div>`  : block level container로 주로 block level element를 구조화하는데 사용
+	+ ***block level element, block level container는 line당 하나만 들어갈 수 있음*** 
+	+ link : <https://developer.mozilla.org/ko/docs/HTML/Block-level_elements> 
+* `<span>` :  inline level container로 주로 inline level element를 구조화하는데 사용
+	+ ***inline level element, inline level container는 line에 여러개 들어갈 수 있음***
+	+ link : <https://developer.mozilla.org/ko/docs/Web/HTML/Inline_elements> 
