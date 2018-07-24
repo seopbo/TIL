@@ -1,4 +1,4 @@
-# argparse module 사용법
+# How to use argparse module
 argparse module은 command line parsing module로써 CLI program 또는 tool을 만들 때 사용하며, 아래와 같은 방법으로 module을 활용한다. 상세한 내용은 아래의 Reference를 참고
 
 * Reference
