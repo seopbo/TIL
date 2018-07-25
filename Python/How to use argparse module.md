@@ -18,7 +18,11 @@ parser = argparse.ArgumentParser() # parser instance를 생성
 
 ### Parser 활용
 생성된 parser instance의 method를 활용하여 CLI를 통해 입력받는 parameter를 parsing한다.
-***(아래의 설명에서 argument로 통칭할 때는 positional argument와 optional argument를 둘다 가리킴)***
+
+***notice***
+1. 아래의 설명에서 argument로 통칭할 때는 positional argument와 optional argument를 둘다 가리킴
+2. 아래의 설명에서의 variable의 name은 `args = parser.parse_args()`에서 `args`의 member variable의 name을 의미
+
 * `argparse.ArgumentParser.add_argument` : CLI에서 입력받을 argument를 설정한다. 해당 method에는 여러 argument가 있지만 중요한 몇 개는 아래와 같다.
   + `name of flags` : argument를 등록한다. postional argument와 optional argument로 나누어져 있으며 아래와 같은 특징이 있음
     - positional argument : `name of flags`에 `-`없이 값을 전달하며, `dest` argument에 variable의 name을 전달할 수 없다. 이는 `name of flags`라는 의미대로 positional argument를 활용할 때, 바로 variable name이 되기 때문
@@ -81,5 +85,4 @@ parser = argparse.ArgumentParser() # parser instance를 생성
 
   + `metavar` : usage message를 출력할 때 표시할 name을 지정 (`dest` argument에 전달한 name보다 우선순위가 높음, 하지만 딱히 쓰지않는 게 좋을 듯하다.)
 
-  + `dest` : optional argument를 사용 시 variable의 name을 명시적으로 지정할 때 사용하며, 외부에서 해당 name을 가지는 variable이 있는 경우, 그 variable에 parsing한 값을 전달한다.
-
+  + `dest` : optional argument를 사용 시 variable의 name을 명시적으로 지정할 때 사용
