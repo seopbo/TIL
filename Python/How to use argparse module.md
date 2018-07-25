@@ -81,7 +81,7 @@ parser = argparse.ArgumentParser() # parser instance를 생성
 
   + `help` : `-h` 또는 `--help` option으로 script를 실행했을 때, argument에 대한 설명을 설정
 
-  + `required` : 필수적으로 값을 전달받아야할 optional argument인 경우 True로 설정, 없으면 알아서 error message를 표시하고 자동으로 exit (positional argument일 때는 해당 argument를 사용하지 않음)
+  + `required` : optional argument인 경우, default 값은 False이며 필수적으로 값을 받아야할 optional argument인 경우 True로 설정, 없으면 알아서 error message를 표시하고 자동으로 exit (positional argument일 때는 해당 argument를 사용하지 않음)
 
   + `metavar` : usage message를 출력할 때 표시할 name을 지정 (`dest` argument에 전달한 name보다 우선순위가 높음, 하지만 딱히 쓰지않는 게 좋을 듯하다.)
 
