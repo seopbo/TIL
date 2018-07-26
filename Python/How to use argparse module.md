@@ -24,7 +24,7 @@ parser = argparse.ArgumentParser() # parser instance를 생성
 2. 아래의 설명에서의 variable의 name은 `args = parser.parse_args()`에서 `args`의 member variable의 name을 의미
 
 * `argparse.ArgumentParser.add_argument` : CLI에서 입력받을 argument를 설정한다. 해당 method에는 여러 argument가 있지만 중요한 몇 개는 아래와 같다.
-  + `name of flags` : argument를 등록한다. postional argument와 optional argument로 나누어져 있으며 아래와 같은 특징이 있음
+	+ `name of flags` : argument를 등록한다. postional argument와 optional argument로 나누어져 있으며 아래와 같은 특징이 있음
     - positional argument : `name of flags`에 `-`없이 값을 전달하며, `dest` argument에 variable의 name을 전달할 수 없다. 이는 `name of flags`라는 의미대로 positional argument를 활용할 때, 바로 variable name이 되기 때문
     ```python
     # test.py
@@ -71,18 +71,42 @@ parser = argparse.ArgumentParser() # parser instance를 생성
     Namespace(o='hello')
     ```
 
-  + `nargs` : argument가 전달받을 수 있는 값의 개수를 가리킴. 이 값보다 많은 값이 들어오는 경우는 무시되며, `+`를 전달할 경우 1개 이상의 값을 받는다는 의미이다. 전달받은 여러 값은  list의 형태로 저장
+	+ `nargs` : argument가 전달받을 수 있는 값의 개수를 가리킴. 이 값보다 많은 값이 들어오는 경우는 무시되며, `+`를 전달할 경우 1개 이상의 값을 받는다는 의미이다. 전달받은 여러 값은  list의 형태로 저장
+	+ `default` : optional argument를 추가할 때, 해당 optional argument가 필수적으로 값을 전달받아야할 argument가 아닐 경우, `default` argument에 값을 전달하면 말그대로 default 값을 설정가능
+	+ `type` : argument에 전달받은 parameter를 parsing하여 저장할 때, type을 설정
+	+ `choices` : argument가 받을 수 있는 값의 목록을 list형태로 전달, argument에 전달받은 값이 list의 element 중 하나가 아니면 error 발생
+	+ `help` : `-h` 또는 `--help` option으로 script를 실행했을 때, argument에 대한 설명을 설정
+	+ `required` : optional argument인 경우, default 값은 False이며 필수적으로 값을 받아야할 optional argument인 경우 True로 설정, 없으면 알아서 error message를 표시하고 자동으로 exit (positional argument일 때는 해당 argument를 사용하지 않음)
+	+ `metavar` : usage message를 출력할 때 표시할 name을 지정 (`dest` argument에 전달한 name보다 우선순위가 높음, 하지만 딱히 쓰지않는 게 좋을 듯하다.)
+	+ `dest` : optional argument를 사용 시 variable의 name을 명시적으로 지정할 때 사용
+* `argparse.ArgumentParser.parse_args` : argument에 전달받은 parameter를 parsing하여, 각각의 parameter를 member variable로 갖는 `argparse.Namespace` class의 instance를 생성한다.
+```python
+# test.py
+import argparse
+parser = argparse.ArgumentParser(description = 'test program입니다.')
+parser.add_argument('p', type = str, help = 'postional argument입니다.')
+parser.add_argument('-o', '--optional', type = str, dest = 'o', help = 'optional argument입니다.')
+args = parser.parse_args()
+print(args)
+print(args.p)
+print(args.o)
+```
+```bash
+$ python test.py -h
+usage: test.py [-h] [-o O] p
 
-  + `default` : optional argument를 추가할 때, 해당 optional argument가 필수적으로 값을 전달받아야할 argument가 아닐 경우, `default` argument에 값을 전달하면 말그대로 default 값을 설정가능
+test program입니다.
 
-  + `type` : argument에 전달받은 parameter를 parsing하여 저장할 때, type을 설정
+positional arguments:
+  p                   postional argument입니다.
 
-  + `choices` : argument가 받을 수 있는 값의 목록을 list형태로 전달, argument에 전달받은 값이 list의 element 중 하나가 아니면 error 발생
-
-  + `help` : `-h` 또는 `--help` option으로 script를 실행했을 때, argument에 대한 설명을 설정
-
-  + `required` : optional argument인 경우, default 값은 False이며 필수적으로 값을 받아야할 optional argument인 경우 True로 설정, 없으면 알아서 error message를 표시하고 자동으로 exit (positional argument일 때는 해당 argument를 사용하지 않음)
-
-  + `metavar` : usage message를 출력할 때 표시할 name을 지정 (`dest` argument에 전달한 name보다 우선순위가 높음, 하지만 딱히 쓰지않는 게 좋을 듯하다.)
-
-  + `dest` : optional argument를 사용 시 variable의 name을 명시적으로 지정할 때 사용
+optional arguments:
+  -h, --help          show this help message and exit
+  -o O, --optional O  optional argument입니다.
+```
+```bash
+$ python test.py hi -o hello
+Namespace(o='hello', p='hi') # print(args)
+hi # print(args.p)
+hello # print(args.o)
+```
