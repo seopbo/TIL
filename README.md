@@ -21,10 +21,11 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [HTML intermediates.md](https://github.com/aisolab/TIL/blob/master/HTML-CSS/HTML_intermediates.md)
 
 ### Python
-* [How to use argparse module.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20argparse%20module.md)
+* [What is first-class function.md](https://github.com/aisolab/TIL/blob/master/Python/What%20is%20first-class%20function.md)
 * [How to handle errors.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20handle%20errors.md)
 * [How to use closure.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20closure.md)
 * [How to use decorator.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20decorator.md)
+* [How to use argparse module.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20argparse%20module.md)
 
 ### Tensorflow
 * [How to simply use tf.data.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20simply%20use%20tf.data.ipynb)
