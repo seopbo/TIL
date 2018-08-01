@@ -134,7 +134,37 @@ outer()
 10 50 30
 ```
 ### closure
-**closure**는 **nonlocal variable**을 이용하여 구현하며, **nonlocal variable**을 상태 정보(free variable)를 저장하는데 활용한다. 예시로 아래와 같이 간단한 은행계좌를 구현하여 확인
+**closure**는 **nonlocal variable**을 이용하여 구현하며, **nonlocal variable**을 상태 정보(free variable)를 저장하는데 활용한다.
+
+#### Template
+**closure**를 구현하는 방식은 크게 아래의 형태를 벗어나지 않는다.
+
+```python
+# 외부함수와 내부함수가 있고
+# 내부함수를 return한다.
+def outer(a):
+    # nonlocal variable인 a를 outer function에 argument로 선언하고 parameter를 
+    # 전달받는 형태로 보통 활용한다.
+    # nonlocal variable a, b를 상태를 저장하는 free variable로 활용한다.
+
+    b = 10 
+    def inner(c, d):
+        nonlocal b
+        b += 1 
+        return a + b + c + d
+    return inner
+```
+
+```python
+add = outer(a = 1)
+result = add(1,2)
+
+print(result)
+```
+
+```python
+15
+```
 
 #### Example
 ##### Bank account를 closure로 구현
