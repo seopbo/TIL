@@ -1,4 +1,4 @@
-# How to handle Errors
+# How to handle errors
 `ValueError`, `FileNotFoundError`, `NameError`, `IndexError` 등등 여러가지 Error를  `try / except` 구문을 이용하여 처리하는 방법에 대해서 정리, 아래의 Reference를 참고함
 
 * Reference
