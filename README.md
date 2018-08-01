@@ -25,6 +25,7 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [How to handle errors.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20handle%20errors.md)
 * [How to use closure.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20closure.md)
 * [How to use decorator.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20decorator.md)
+* [How to use functional programming.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20functional%20programming.md)
 * [How to use argparse module.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20argparse%20module.md)
 
 ### Tensorflow
