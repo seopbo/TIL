@@ -1,4 +1,4 @@
-# What is First-class function
+# What is first-class function
 Python에서는 function은 모두 **First-class function**으로 이는 function을 **First-class citizen**으로 취급하는 것을 의미한다. **First-class citizen**에 대한 상세한 내용은 Reference를 참고, 이 의미를 간단하게 요약해보자면 아래의 세 항목과 같다.
 
 * Reference
