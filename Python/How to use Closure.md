@@ -1,6 +1,6 @@
 # How to use Closure
 
-Python에서 **객체지향(Object-Oriented Programming, OOP)**을 구현하는 수단 중 하나인  **Closure**를 사용하는 방법에 대하여 정리, 사실 Python은 을 `class`로 지원하기 때문에, ***사실 Closure를 사용할 일은 거의 없으며***, 먼저 **Closure**에 대해 정리하기에 **Namespace**을 알아야 하기 때문에 같이 정리
+Python에서 **객체지향(Object-Oriented Programming, OOP)** 을 구현하는 수단 중 하나인  **Closure**를 사용하는 방법에 대하여 정리, 사실 Python은 을 `class`로 지원하기 때문에, ***사실 Closure를 사용할 일은 거의 없으며***, 먼저 **Closure**에 대해 정리하기에 **Namespace**을 알아야 하기 때문에 같이 정리
 
 ### Namespace
 
