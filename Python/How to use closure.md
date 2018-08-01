@@ -1,10 +1,10 @@
 # How to use closure
 
-Python에서 **객체지향(Object-Oriented Programming, OOP)** 을 구현하는 수단 중 하나인  **closure**를 사용하는 방법에 대하여 정리, 사실 Python은 을 `class`로 지원하기 때문에, ***사실 Closure를 사용할 일은 거의 없으며***, 먼저 **Closure**에 대해 정리하기에 **Namespace**을 알아야 하기 때문에 같이 정리
+Python에서 **객체지향(Object-Oriented Programming, OOP)** 을 구현하는 수단 중 하나인  **closure**를 사용하는 방법에 대하여 정리, 사실 Python은 을 `class`로 지원하기 때문에, ***사실 closure를 사용할 일은 거의 없으며***, 먼저 **closure**에 대해 정리하기에 **namespace**을 알아야 하기 때문에 같이 정리
 
-### Namespace
+### namespace
 
-variable에는 **global variable**과 **local variable**이 있으며 **local variable**의 경우는 **global variable**과 달리 function을 선언할 때, 해당 function의 **Namespace**에서 존재한다. 즉 다시 말해서 **local variable**은 각각의 function마다 각각의 function **Namespace**에 존재한다. 요약해서 정리하면 아래와 같다.
+variable에는 **global variable**과 **local variable**이 있으며 **local variable**의 경우는 **global variable**과 달리 function을 선언할 때, 해당 function의 **namespace**에서 존재한다. 즉 다시 말해서 **local variable**은 각각의 function마다 각각의 function **namespace**에 존재한다. 요약해서 정리하면 아래와 같다.
 
 * global variable : variable, function (Python에서는 모든 것이 object이므로)
 * local variable : function 내에서 선언되는 variable들
@@ -94,7 +94,7 @@ print(a)
 ```
 
 #### nonlocal variable
-**nonlocal variable**은 ***global variable도 아니고 local variable도 아닌 variable이다.*** 사실상 Python에서 **Closure**를 구현하기위한 핵심 내용 중 하나이다. 코드로는 아래와 같이 확인할 수 있다.
+**nonlocal variable**은 ***global variable도 아니고 local variable도 아닌 variable이다.*** 사실상 Python에서 **closure**를 구현하기위한 핵심 내용 중 하나이다. 코드로는 아래와 같이 확인할 수 있다.
 
 ```python
 # function마다 고유한 namespace를 가지고 있다.
@@ -133,13 +133,13 @@ outer()
 ```python
 10 50 30
 ```
-### Closure
-**Closure**는 **nonlocal variable**을 이용하여 구현하며, **nonlocal variable**을 상태 정보(free variable)를 저장하는데 활용한다. 예시로 아래와 같이 간단한 은행계좌를 구현하여 확인
+### closure
+**closure**는 **nonlocal variable**을 이용하여 구현하며, **nonlocal variable**을 상태 정보(free variable)를 저장하는데 활용한다. 예시로 아래와 같이 간단한 은행계좌를 구현하여 확인
 
 #### Example
-##### Bank account를 Closure로 구현
+##### Bank account를 closure로 구현
 ```python
-# 은행계좌를 Closure로 구현
+# 은행계좌를 closure로 구현
 def account(name, money):
     def change_money(amount):
         nonlocal money
@@ -165,7 +165,7 @@ True
 False
 ```
 
-##### Digging the inside of Closure
+##### Digging the inside of closure
 * function 내부의 closure에 **nonlocal variable** (상태정보를 담고있는 free variable을 담는데 활용)의 값들을 저장
 
 ```python
