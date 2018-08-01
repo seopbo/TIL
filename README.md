@@ -23,6 +23,7 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 ### Python
 * [How to use argparse module.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20argparse%20module.md)
 * [How to handle Errors.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20handle%20Errors.md)
+* [How to use Closure.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20Closure.md)
 
 ### Tensorflow
 * [How to simply use tf.data.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20simply%20use%20tf.data.ipynb)
