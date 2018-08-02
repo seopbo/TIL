@@ -10,6 +10,10 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [좋은 git commit message를 작성하기 위한 7가지 약속](http://meetup.toast.com/posts/106)
 
 ---
+### CS
+* [Variable.md](https://github.com/aisolab/TIL/blob/master/CS/Variable.md)
+* [Integer.md](https://github.com/aisolab/TIL/blob/master/CS/Integer.md)
+
 ### Django
 
 ### Git
