@@ -22,7 +22,7 @@ func()
 print(a)
 ```
 
-```python
+```bash
 20 in func # func namespace에 있는 local variable a 출력
 10 # global variable a 출력
 ```
@@ -40,7 +40,7 @@ def func():
 func()
 ```
 
-```python
+```bash
 10 # global variable
 ```
 
@@ -56,7 +56,7 @@ def func():
 func()
 ```
 
-```python
+```bash
 # UnboundLocalError 발생
 UnboundLocalError                         Traceback (most recent call last)
 <ipython-input-3-769091722474> in <module>()
@@ -88,7 +88,7 @@ func()
 print(a)
 ```
 
-```python
+```bash
 11 # global variable 
 11 # global variable
 ```
@@ -109,7 +109,7 @@ def outer():
 outer()
 ```
 
-```python
+```bash
 10 20 30
 ```
 
@@ -130,9 +130,10 @@ def outer():
 outer()
 ```
 
-```python
+```bash
 10 50 30
 ```
+
 ### closure
 **closure**는 **nonlocal variable**을 이용하여 구현하며, **nonlocal variable**을 상태 정보(free variable)를 저장하는데 활용한다.
 
@@ -162,7 +163,7 @@ result = add(1,2)
 print(result)
 ```
 
-```python
+```bash
 15
 ```
 
@@ -187,7 +188,7 @@ print(aisolab_acnt.__code__ == modulab_acnt.__code__)
 print(aisolab_acnt == modulab_acnt)
 ```
 
-```python
+```bash
 ('aisolab', 500) ('modulab', 10000)
 change_money change_money
 <class 'function'> <class 'function'>
@@ -203,7 +204,7 @@ aisolab_closure = aisolab_acnt.__closure__
 print([cell.cell_contents for cell in aisolab_closure])
 ```
 
-```python
+```bash
 [500, 'aisolab']
 ```
 
@@ -215,7 +216,7 @@ print(aisolab_code_object.co_freevars)
 print(aisolab_code_object.co_varnames)
 ```
 
-```python
+```bash
 ('money', 'name')
 ('amount',)
 ```
