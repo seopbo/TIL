@@ -25,6 +25,6 @@ num = 5
 print(type(num))
 ```
 
-```python
+```bash
 <class 'int'> # int라는 class의 instance(object)
 ```
