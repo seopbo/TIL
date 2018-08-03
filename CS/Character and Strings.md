@@ -98,7 +98,7 @@ $$
 
 2. UTF-8에서 유니코드 코드 포인트가 U+0800에서 U+FFFF인 문자는 다음의 포맷으으로 인코딩하여 코드 유닛을 생성한다.
 $$
-1110 \Box\Box\Box\Box \ 10\Box\Box\Box\Box\Box\Box \ 10\Box\Box\Box\Box\Box\Box
+1110 \Box \Box \Box \Box \ 10 \Box \Box \Box \Box \Box \Box \ 10 \Box \Box \Box \Box \Box \Box
 $$
 
 3. 위의 포맷에 맞추어 1에서 2진수로 표현한 것을 x에 앞에서부터 차례로 채워넣는다.
