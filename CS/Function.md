@@ -1,4 +1,4 @@
-# function
+# Function
 본 내용은 [양태환](https://github.com/ythwork)님의 저서 **컴퓨터 사이언스 부트캠프 with 파이썬** 을 읽고 요약정리한 내용
 
 ## 1. 함수를 시작하기 전에
