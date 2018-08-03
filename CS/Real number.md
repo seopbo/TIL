@@ -229,3 +229,39 @@ print(a==c)
 8.881784197001252e-16
 True
 ```
+
+### Application of epsilon
+이 **엡실론(epsilon)** 개념을 이용하면, 아래의 현상을 없앨 수 있는 좋은 comparision function을 만들 수가 있다.
+
+```python
+a = .1 * 3
+b = .3
+
+print(a == b)
+```
+
+```bash
+False
+```
+
+두 수를 비교할 때, 아래와 같은 **상대오차(relative error)** 가 엡실론보다 작으면 서로 같은 수라고 판단하는 function을 만듦으로써 위와 같은 문제를 해결할 수 있다.
+
+$$
+relative \ error = {\left\vert x - y\right\vert \over \max(\left\vert x \right\vert , \left\vert y \right\vert)}
+$$
+
+```python
+import sys
+def is_equal(a, b):
+	ep = sys.float_info.epsilon
+	return abs(a - b) <= max(abs(a), abs(b)) * ep
+
+a = .1 * 3
+b = .3
+
+print(is_equal(a,b))
+```
+
+```bash
+True
+```
