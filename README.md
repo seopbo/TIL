@@ -14,7 +14,7 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [Variable.md](https://github.com/aisolab/TIL/blob/master/CS/Variable.md)
 * [Integer.md](https://github.com/aisolab/TIL/blob/master/CS/Integer.md)
 * [Real number.md](https://github.com/aisolab/TIL/blob/master/CS/Real%20number.md)
-
+* [Character and Strings.md](https://github.com/aisolab/TIL/blob/master/CS/Character%20and%20Strings.md)
 ### Django
 
 ### Git
