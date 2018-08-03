@@ -231,7 +231,7 @@ True
 ```
 
 ### Application of epsilon
-이 **엡실론(epsilon)** 개념을 이용하면, 아래의 현상을 없앨 수 있는 좋은 comparision function을 만들 수가 있다.
+**엡실론(epsilon)** 개념을 이용하면, 아래의 현상을 없앨 수 있는 좋은 comparision function을 만들 수가 있다.
 
 ```python
 a = .1 * 3
