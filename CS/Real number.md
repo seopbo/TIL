@@ -47,7 +47,7 @@ print(sys.float_info)
 
 ```bash
 # dig : 배정도로 표현할 수 있는 10진수의 자리수
-# mant_dig : 가수부 비트 + 정규화에 따른 1비트 = 53비트, 
+# mant_dig : 가수의 비트 (정규화에 따른 1비트 + 가수의 man(가수부) 52비트)
 # epsilon이 중요
 sys.float_info(max=1.7976931348623157e+308, max_exp=1024, max_10_exp=308, min=2.2250738585072014e-308, min_exp=-1021, min_10_exp=-307, dig=15, mant_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)
 ```
