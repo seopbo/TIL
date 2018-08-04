@@ -5,6 +5,7 @@
 	+ <https://en.wikipedia.org/wiki/Call_stack#STACK-FRAME> 
 	+ <https://en.wikipedia.org/wiki/Namespace> 
 	+ <http://tcpschool.com/c/c_memory_stackframe>
+	+ <https://item4.github.io/2015-07-18/Some-Ambiguousness-in-Python-Tutorial-Call-by-What/>
 
 ## 1. 함수를 시작하기 전에
 ### 1.1 자료 구조 미리 엿보기
@@ -59,6 +60,8 @@ g_var = 20 in main
 
 또 살펴 볼 것은 ***함수(외부 함수) 내부에 함수(내부 함수)가 정의된 경우, 내부 함수가 아닌 외부 함수에 정의된 변수는 전역변수도 아니고, 내부 함수의 지역변수도 아니다.*** 이러한 경우를 통칭하여 **non-local variable** 이라고 칭한다. 이는 Python에서의 네이밍이며 다른 언어에서는 다른 이름일 수 있다. 아래의 코드로 확인가능하다.
 
+[아래의 예시에 대한 동작 확인](http://pythontutor.com/visualize.html#code=a%20%3D%2010%20%23%20global%0Adef%20outer%28%29%3A%0A%20%20%20%20b%20%3D%2020%20%23%20non-local%0A%20%20%20%20def%20inner%28%29%3A%0A%20%20%20%20%20%20%20%20c%20%3D%2030%20%23%20non-local%0A%20%20%20%20%20%20%20%20def%20deeper%28%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20d%20%3D%2040%20%23%20local%0A%20%20%20%20%20%20%20%20%20%20%20%20print%28a,%20b,%20c,%20d%29%0A%20%20%20%20%20%20%20%20deeper%28%29%0A%20%20%20%20inner%28%29%0A%20%20%20%20%0Aouter%28%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false)
+
 ```python
 a = 10 # global
 def outer():
@@ -76,4 +79,206 @@ outer()
 
 ```bash
 10 20 30 40
+```
+
+위의 코드에서 보면 `outer` 함수 내부에 정의된 `inner` 함수, `inner` 함수 내부에 정의된 `deeper` 함수의 입장에서 변수 `b`, 변수 `c` 전역변수가 아니고 non-local variable이며, `deeper` 함수 내부에서 변수 `b`와 변수 `c`를 수정하려면 `nonlocal` 키워드를 활용한다. 아래의 코드로 확인가능하다.
+
+[아래의 예시에 대한 동작 확인](http://pythontutor.com/visualize.html#code=a%20%3D%2010%20%23%20global%0Adef%20outer%28%29%3A%0A%20%20%20%20b%20%3D%2020%20%23%20non-local%0A%20%20%20%20def%20inner%28%29%3A%0A%20%20%20%20%20%20%20%20c%20%3D%2030%20%23%20non-local%0A%20%20%20%20%20%20%20%20def%20deeper%28%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20nonlocal%20b,%20c%0A%20%20%20%20%20%20%20%20%20%20%20%20b%20%2B%3D%201%0A%20%20%20%20%20%20%20%20%20%20%20%20c%20%2B%3D%201%0A%20%20%20%20%20%20%20%20%20%20%20%20d%20%3D%2040%20%23%20local%0A%20%20%20%20%20%20%20%20%20%20%20%20print%28a,%20b,%20c,%20d%29%0A%20%20%20%20%20%20%20%20deeper%28%29%0A%20%20%20%20inner%28%29%0A%20%20%20%20%0Aouter%28%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false)
+
+```python
+a = 10 # global
+def outer():
+    b = 20 # non-local
+    def inner():
+        c = 30 # non-local
+        def deeper():
+            nonlocal b, c
+            b += 1
+            c += 1
+            d = 40 # local
+            print(a, b, c, d)
+        deeper()
+    inner()
+    
+outer()
+```
+
+```bash
+10 21 31 40
+```
+
+## 2. 인자 전달 방식에 따른 분류
+함수는 **인자(argument)** 에 **매개변수(parameter)** 를 전달하는 방식에 크게 **값에 의한 전달(call by value)** , **참조에 의한 전달(call by reference)** 등으로 나뉜다. Python에서는 변수는 이름일 뿐이고 그 저 **값 객체(value object)** 를 가리킨다는 특징이 있어서, 함수의 인자에 매개변수를 전달하는 방식이 위의 두 가지가 아닌 **객체 참조에 의한 전달(call by object reference)** 를 따른다. 이는 **call by assignment** 라고도 불린다.
+
+### 2.1 값에 의한 전달
+아래의 C++ 코드의 실행결과를 보면, **값에 의한 전달(call by value)** 가 이루어지고 있음을 알 수 있다. `main` 함수가 호출되어 스택 프레임이 쌓이는 과정을 기술해보면, `main` 함수의 스택 프레임의 변수 x에 10이 할당되고, 이후 `change_value` 함수가 호출되면서 `change_value` 함수의 스택 프레임의 변수  val에는 20이 할당된다. 그 다음 `change_value` 함수의 스택 프레임의 변수 x에 10이 할당된다. ***그 이후 `change_value` 함수 내부에 `x = val;` 코드가 실행되면서 `change_value` 함수의 스택 프레임의 변수 val에 담긴 값만 복사하여 `change_value` 함수의 스택 프레임의 변수 x에 할당한다.*** `change_value` 함수가 실행을 마치면 `change_value` 함수의 스택프레임을 반환하기 때문에, 아래와 같은 출력결과가 나온다.
+
+[아래의 코드에 대한 동작 확인](http://pythontutor.com/visualize.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20change_value%28int%20x,%20int%20val%29%20%7B%0A%20%20%20%20x%20%3D%20val%3B%0A%20%20%20%20printf%28%22x%20%3A%20%25d%20in%20change_value%20%5Cn%22,%20x%29%3B%0A%7D%0A%0Aint%20main%28void%29%20%7B%0A%20%20%20%20int%20x%20%3D%2010%3B%0A%20%20%20%20change_value%28x,%2020%29%3B%0A%20%20%20%20printf%28%22x%20%3A%20%25d%20in%20main%20%5Cn%22,%20x%29%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=cpp&rawInputLstJSON=%5B%5D&textReferences=false)
+
+```cpp
+#include <stdio.h>
+
+void change_value(int x, int val) {
+	x = val;
+	printf("x : %d in change_value \n", x);
+}
+
+int main(void) {
+	int x = 10;
+	change_value(x, 20);
+	printf("x : %d in main \n", x);
+}
+```
+
+```bash
+x : 20 in change_value
+x : 10 in main
+```
+
+### 2.2 참조에 의한 전달
+아래의 C++ 코드의 실행결과를 보면, **참조에 의한 전달(call by reference)** 가 이루어지고 있음을 알 수 있다. `main` 함수가 호출되어 스택 프레임이 쌓이는 과정을 기술해보면, `main` 함수의 스택 프레임의 변수 x에 10이 할당되고,  `change_value` 함수가 호출되면서 `change_value` 함수의 스택 프레임의 변수  val에는 20이 할당된다. 그 다음 인자에 매개변수로  `&x` 를 전달하는데 이는 `main` 함수의 스택 프레임의 변수 x의 첫 번째 바이트 주소값을 전달한다는 의미이며, 고로 `change_value` 함수의 스택 프레임의 변수 x에 이 주소값이 할당된다. (`change_value` 함수의 스택 프레임의 변수 x가 `main` 함수의 스택 프레임의 변수 x를 가리키는 상태 ) 다음 `change_value` 함수의 내부에서 `*x = val` 실행되므로, `main` 함수의 스택 프레임의 변수 x에 `change_value` 함수의 스택 프레임의 변수  val에 담긴 값 20을 복사하여 할당한다. `change_value` 함수가 실행을 마치면 `change_value` 함수의 스택프레임을 반환하기 때문에, 아래와 같은 출력결과가 나온다.
+
+[아래의 코드에 대한 동작 확인](http://pythontutor.com/visualize.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20change_value%28int%20*%20x,%20int%20val%29%20%7B%0A%20%20%20%20*x%20%3D%20val%3B%0A%20%20%20%20printf%28%22x%20%3A%20%25d%20in%20change_value%20%5Cn%22,%20*x%29%3B%0A%7D%0A%0Aint%20main%28void%29%20%7B%0A%20%20%20%20int%20x%20%3D%2010%3B%0A%20%20%20%20change_value%28%26x,%2020%29%3B%0A%20%20%20%20printf%28%22x%20%3A%20%25d%20in%20main%20%5Cn%22,%20x%29%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=cpp&rawInputLstJSON=%5B%5D&textReferences=false)
+
+```cpp
+#include <stdio.h>
+
+void change_value(int * x, int val) {
+	*x = val;
+	printf("x : %d in change_value \n", *x);
+}
+
+int main(void) {
+	int x = 10;
+	change_value(&x, 20);
+	printf("x : %d in main \n", x);
+}
+```
+
+```bash
+x : 20 in change_value
+x : 20 in main
+```
+
+### 2.3 객체 참조에 의한 전달
+**객체 참조에 의한 전달(call by object reference)**는 Python에서 함수의 인자에 매개변수를 전달하는 방식으로 사실은 Python의 변수는 그저 이름을 뿐이며, 변수는 **값 객체(value object)** 를 가리킨다는 사실만 상기하고 있으면, 매우 이해하기 쉽다. 그렇기 때문에 값 객체의 특성을 이해하는 것이 중요하며, Python에서 값 객체는 **immutable**과 **mutable** 의 두 종류가 있으며 아래와 같다.
+
+* **immutable**
+	+ number(int, float), str, tuple
+* **mutable**
+	+ list, dictionary, set
+
+**immutable** 한 값 객체는 ***변경 또는 수정할 수 없으며, 변경 또는 수정하는 것처럼 보이는 경우는 항상 새로운 값 객체를 생성하여 가리키는 것일 뿐이다.*** 아래의 코드로 확인할 수 있다.
+
+* number(int, float)
+
+```python
+a = 1
+b = 1
+print('a : {}, b : {}'.format(hex(id(a)), hex(id(b))))
+
+a +=1 
+print('a : {}'.format(hex(id(a))))
+```
+
+```bash
+a : 0x10e29b210, b : 0x10e29b210
+a : 0x10e29b230
+```
+
+* str
+
+```python
+a = 's'
+b = 's'
+print('a : {}, b : {}'.format(hex(id(a)), hex(id(b))))
+
+a += 'f'
+print('a : {}'.format(hex(id(a))))
+```
+
+```bash
+a : 0x10cde1ca8, b : 0x10cde1ca8
+a : 0x10ef446c0
+```
+
+* tuple
+sequence type인 튜플은 각각 element가 가리키는 값 객체가 같아도 하나로 묶어서 튜플을 생성할 때 서로 다른 값 객체로 생성된다.
+
+```python
+a = 1,2
+b = 1,2
+print('b[0] : {}, b[1] : {}'.format(hex(id(b[0])), hex(id(b[1]))))
+print('a[0] : {}, a[1] : {}'.format(hex(id(a[0])), hex(id(a[1]))))
+print('a : {}, b : {}'.format(hex(id(a)), hex(id(b))))
+```
+
+```bash
+b[0] : 0x10e2b2210, b[1] : 0x10e2b2230
+a[0] : 0x10e2b2210, a[1] : 0x10e2b2230
+a : 0x11045c788, b : 0x11045fc48
+```
+
+**mutable** 한 값 객체는 ***변경 또는 수정이 가능하므로, 이미 가리키고 있는 값 객체가 변한다.*** 아래의 코드로 확인할 수 있다.
+
+* list
+
+```python
+a = [1,2]
+b = [1,2]
+print('a[0] : {}, a[1] : {}'.format(hex(id(a[0])), hex(id(a[1]))))
+print('b[0] : {}, b[1] : {}'.format(hex(id(b[0])), hex(id(b[1]))))
+print('a : {}, b : {}'.format(hex(id(a)), hex(id(b))))
+
+a[0] += 2
+print('a[0]: {}'.format(hex(id(a[0]))))
+print('a : {}'.format(hex(id(a))))
+```
+
+```bash
+a[0] : 0x1034dc210, a[1] : 0x1034dc230
+b[0] : 0x1034dc210, b[1] : 0x1034dc230
+a : 0x105841508, b : 0x1058414c8
+a[0]: 0x1034dc250
+a : 0x105841508
+```
+
+* dictionary
+
+```python
+a = dict(a = 1, b = 2)
+b = dict(a = 1, b = 2)
+
+print('a["a"] : {}, a["b"] : {}'.format(hex(id(a.get('a'))),hex(id(a.get('b')))))
+print('b["a"] : {}, b["b"] : {}'.format(hex(id(b.get('a'))),hex(id(b.get('b')))))
+print('a : {}, b : {}'.format(hex(id(a)), hex(id(b))))
+
+a.update({'c' : 3})
+print('a : {}'.format(hex(id(a))))
+```
+
+```bash
+a["a"] : 0x101236210, a["b"] : 0x101236230
+b["a"] : 0x101236210, b["b"] : 0x101236230
+a : 0x10357b5a0, b : 0x10357b3f0
+a : 0x10357b5a0
+```
+
+* set
+
+```python
+a = set([1,2,3])
+print(a)
+print('a : {}'.format(hex(id(a))))
+
+a.update([3,4])
+print(a)
+print('a : {}'.format(hex(id(a))))
+```
+
+```bash
+{1, 2, 3}
+a : 0x1035814a8
+{1, 2, 3, 4}
+a : 0x1035814a8
 ```
