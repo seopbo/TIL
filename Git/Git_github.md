@@ -12,7 +12,7 @@ Remote repository로 [Github](https://github.com/)를 이용하는 방법을 정
 #### Preliminary
 * [Github](https://github.com/) 가입
 	+ [SSH public key 생성](https://git-scm.com/book/ko/v1/Git-%EC%84%9C%EB%B2%84-SSH-%EA%B3%B5%EA%B0%9C%ED%82%A4-%EB%A7%8C%EB%93%A4%EA%B8%B0)
-	+ https://github.com/settings/keys에서 생성한 SSH public key를 등록
+	+ <https://github.com/settings/keys>에서 생성한 SSH public key를 등록
 
 #### Creating remote repository using Github
 Github에서 remote repository를 생성하면, 두 가지 방식으로 Github의 remote repository와 local repository를 연동할 수 있음
