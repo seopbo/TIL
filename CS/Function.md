@@ -282,3 +282,44 @@ a : 0x1035814a8
 {1, 2, 3, 4}
 a : 0x1035814a8
 ```
+
+Python에서 함수를 호출할 때, **객체참조에 의한 전달**로 함수의 인자에 매개변수를 전달하는 방식은 ***결국 인자에 어떤 값 객체를 전달하느냐에 따라 동작방식이 다르며*** , 코드를 통해서 확인하면 아래와 같다. 
+
+* **immutable** 한 값 객체를 함수의 인자에 전달하는 경우
+아래의 예제를 분석해보면, `global frame` 에 `global variable x` 가 생기고, 이 `global variable x` 가 메모리공간에 저장된 **immutable** 한 값 객체 `10` 을 가리킨다. `change_value` 함수가 호출되면 `change_value` 함수명을 이름으로하는 `stack frame` 에 `local variable value` 가 형성되고, 메모리공간에 저장된 **immutable** 한 값 객체 `20` 을 가리킨다. 바로 이어서 `local variable x` 가 형성되고, 메모리공간에 저장된 **immutable** 값 객체 `10` 을 가리킨다. `change_value` 함수 내부의 코드 `x = value` 가 실행되면서  `local variable value` 가 가리키고 있는 **immutable** 한 값 객체 `20` 을 `local variable x` 도  같이 가리킨다. 그 후 함수가 종료되면 `stack frame` 을 반환한다. `global variable x` 는 여전히 **immutable** 한 값 객체 `10` 을 가리키고 있기 때문에, 출력 결과는 아래와 같다.
+
+```python
+def change_value(x, value):
+    x = value
+    print('x : {} in function'.format(x))
+    
+if __name__ == '__main__':
+    x = 10
+    change_value(x, 20)
+    print('x : {} in main'.format(x))
+```
+
+```bash
+x : 20 in function
+x : 10 in main
+```
+
+* **mutable** 한 값 객체를 함수의 인자에 전달할 경우
+아래의 예제를 분석해보면, `global frame` 에 할당된  `global variable li` 는 메모리공간에 저장된 **mutable** 한 값 객체 `[0,1,2,3]` 을 가리킨다. `func` 함수가 호출되면 `func` 함수명을 이름으로하는 `stack frame` 에 `local variable li` 가 형성되고, 이는 `global variable li` 가 가리키는 **mutable** 한 값 객체 `[0,1,2,3]` 을 가리킨다. 동일한 값 객체를 `local variable li` , `global variablie li` 가 가리키고 있지만 **mutable** 한 값 객체이기 때문에, **global** 키워드가 없어도 `func` 함수 내부에서 수정이 가능하다. 함수 실행이 완료되면 `stack frame` 을 반환한다. `global variable li` 가 `func` 함수 내부에서 `li[0] = Talk is cheap. Show me the code.` 이 실행되어 수정된 값 객체 `li = ['Talk is cheap. Show me the code,1,2,3]` 을 가리키게 되기 때문에, 아래와 같은 출력이 나온다.
+
+
+```python
+def func(li):
+    li[0] = 'Talk is cheap. Show me thoe code.'
+    print('{} in function'.format(li))
+    
+if __name__ == '__main__':
+    li = [0,1,2,3]
+    func(li)
+    print('{} in main'.format(li))
+```
+
+```bash
+['Talk is cheap. Show me thoe code.', 1, 2, 3] in function
+['Talk is cheap. Show me thoe code.', 1, 2, 3] in main
+```
