@@ -161,7 +161,7 @@ x : 20 in main
 ```
 
 ### 2.3 객체 참조에 의한 전달
-**객체 참조에 의한 전달(call by object reference)**는 Python에서 함수의 인자에 매개변수를 전달하는 방식으로 사실은 Python의 변수는 그저 이름을 뿐이며, 변수는 **값 객체(value object)** 를 가리킨다는 사실만 상기하고 있으면, 매우 이해하기 쉽다. 그렇기 때문에 값 객체의 특성을 이해하는 것이 중요하며, Python에서 값 객체는 **immutable**과 **mutable** 의 두 종류가 있으며 아래와 같다.
+**객체 참조에 의한 전달(call by object reference)** 는 Python에서 함수의 인자에 매개변수를 전달하는 방식으로 사실은 Python의 변수는 그저 이름을 뿐이며, 변수는 **값 객체(value object)** 를 가리킨다는 사실만 상기하고 있으면, 매우 이해하기 쉽다. 그렇기 때문에 값 객체의 특성을 이해하는 것이 중요하며, Python에서 값 객체는 **immutable**과 **mutable** 의 두 종류가 있으며 아래와 같다.
 
 * **immutable**
 	+ number(int, float), str, tuple
