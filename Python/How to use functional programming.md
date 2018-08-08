@@ -38,9 +38,17 @@ print(result)
 ```
 
 ### Lazy evaluation
-**Lazy evaluation**은 **Functional programming**의 특징 중 하나로 필요할 때만 연산을 수행하여, 실행 속도를 계산하는 방법이다. Python에서 `iterator` object에 대해서만 동작하며, `iterator` object는 간단하게 말하자면 `next` function으로 데이터를 순차적으로 호출 가능한 object이다. (`__next__` method가 존재한다는 뜻) Python에서는 `map`, `filter`가 생성하는 각각의 `map` object, `filter` object 등이 `iterator` object이다. `reduce`로 하는 연산은 **Lazy evaluation**이 아니다. 그러므로 주의해야할 것은 `map` object, `filter` object를 일부러 `list` function을 이용하여, `iterable`로 바꾸는 것은 멍청하고 비효율적인 행동이다. **Lazy evaluation**을 활용하지 못하기 때문이다.
+**Lazy evaluation**은 **Functional programming**의 특징 중 하나로 필요할 때만 연산을 수행하여, 실행 속도를 계산하는 방법이다. Python에서 `iterator` object에 대해서만 동작하며, `iterator` object는 간단하게 말하자면 `next` function으로 데이터를 순차적으로 호출 가능한 object이다. (`__next__` method가 존재한다는 뜻) Python에서는 `map`, `filter`가 생성하는 각각의 `map` object, `filter` object 등이 `iterator` object이다. `reduce`로 하는 연산은 **Lazy evaluation**이 아니다. 그러므로 주의해야할 것은 `map` object, `filter` object를 일부러 `list` function을 이용하여, `iterable`로 바꾸는 것은 멍청하고 비효율적인 행동이다. **Lazy evaluation**을 활용하지 못하기 때문이다. `lambda`와는 아래와 같이 조합하여 활용하며, `iterable` object와 `iterator` object의 차이는 아래와 같다.
 
-`lambda`와는 아래와 같이 조합하여 활용한다.
+* `iterable` object
+	+ `__iter__` method가 정의되어있는 sequential data type의 object
+	+ `iter` function의 해당 `iterable` object를 넣으면, object의 element를 모두 가지고 있는 `iterator` object를 생성함 (eg. `list_iterator`, `str_iterator`, `tuple_iterator`)
+	+ `for` loop으로 순회가능하며, `iterable` object를 `for` loop로 순회하면 내부적으로 해당 `iterable` object를 기반으로 `iterator` object를 생성하여 `next` function을 적용하는 것과 같음
+
+* `iterator` object
+	+ `__next__` method와 `__iter__` method가 정의되어있는 sequential data type의 object
+	+ 해당 object를 `for` loop로 한번 순회하면 그 이후 순회해도 object의 element에 접근불가
+	+ `next` function으로 object의 element를 다 꺼내면 `StopIteration` error 발생
 
 #### map
 `map`은 function과 `iterable`한 object를 받아서 `iterator` object를 내준다.
