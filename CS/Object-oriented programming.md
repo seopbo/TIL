@@ -24,8 +24,8 @@
 
 **절차지향 프로그래밍(procedural programming)** 을 간단히 정의하자면 함수를 설계할 때 위와 같은 사항들을 잘 지켜서 ***"이 프로그램은 어떤 일을 하는 가?"*** 에 대한 질문에 쉽게 답할 수 있도록 함수를 사용해 프로그래밍을 하는 것이라 할 수 있다. 
 
-## 3. 절차지향으로 프로그래밍 만들기
-예를 들어, 절차지향으로 엑셀에 저장된 학생들의 점수를 가져와 평균과 표준편차를 구하고, 이를 학년 전체 평균과 비교하는 프로그램을 Python을 이용해서 절차지향으로 작성한다고하면 `functions.py` script (module)에 엑셀에 저장된 학생들의 점수를 가져오는 함수, 평균을 구하는 함수, 분산을 구하는 함수 등을 정의해두고, 사용자 프로그램인 `main.py` script에서 `functions.py` script (module)에 정의된 함수들을 불러와 사용할 수 있다. 이 예제에서 사용하는 데이터와 작성된 `functions.py`, `main.py` script는 아래와 같다.
+## 3. 절차지향으로 학급 성적 평가 프로그램 만들기
+예를 들어, 절차지향으로 엑셀에 저장된 학생들의 점수를 가져와 평균과 표준편차를 구하고, 이를 학년 전체 평균과 비교하는 프로그램을 Python을 이용해서 절차지향으로 작성한다고하면 `functions.py` script (module)에 엑셀에 저장된 학생들의 점수를 가져오는 함수, 평균을 구하는 함수, 분산을 구하는 함수 등을 정의해두고, 유저 프로그램인 `main.py` script에서 `functions.py` script (module)에 정의된 함수들을 불러와 사용할 수 있다. 이 예제에서 사용하는 데이터와 작성된 `functions.py`, `main.py` script는 아래와 같다.
 
 * `class_1.xlsx`
 실제로 각 column의 이름에 대한 row는 존재하지 않음.
@@ -123,7 +123,7 @@ if __name__ == '__main__':
     main()
 ```
 
-위에서 보듯이 절차지향으로 프로그래밍을 작성하면, 사용자 프로그램인 `main.py` script에서는 코드가 매우 단순화 된 것을 볼 수 있다. 사용자는 아래처럼 사용하고자하는 프로그램을 실행시키기만하면된다.
+위에서 보듯이 절차지향으로 프로그래밍을 작성하면, 유저 프로그램인 `main.py` script에서는 코드가 매우 단순화 된 것을 볼 수 있다. 사용자는 아래처럼 사용하고자하는 프로그램을 실행시키기만하면된다.
 
 ```bash
 $ python main.py --help
@@ -461,5 +461,302 @@ user : modulab, balance :6000
 ```
 
 ### 4.5 정보 은닉
+**캡슐화(encapsulation)** 를 할 때, 어떤 클래스 변수(class variable)나 인스턴스 변수(instance variable)는 유저 프로그래머에게 공개하여 접근할 수 있도록 해야하고, 특정 클래스 변수나 인스턴스는 유저 프로그래머가 접근할 수 없도록 숨겨야하는데 이러한 개념을 **정보 은닉(information hiding)** 이라고 한다. Python에서는 기본적으로 **정보 은닉(information hiding)** 을 지원하지는 않으므로, Python에서 해당 개념을 구현 시 완벽하지는 않지만 비슷하게 **name mangilng** technique이나 `@property` decorator를 이용하여 구현한다. 먼저 C++에서 정보은닉이 구현된 코드를 Python으로 비슷하게 구현해보는 예제로 확인해보자.
 
+#### C++
+  아래의 C++코드에서 봐야할 것은 `public` 과 `private` 키워드로 `public` 선언한 인스턴스 메소드(instance method)와 인스턴스 변수(instance variable)은 유저 프로그래머가 접근하거나 호출할 수 있으며, `private` 키워드로 선언한 인스턴스 메소드나 인스턴스 변수는 유저 프로그래머가 접근하거나 호출할 수 없다. 이러한 `public`, `private` 키워드를 **접근 제어 지시자(access modifier)** 라고하며 Python에는 이러한 키워드가 구현되어있지 않다.
+
+  아래의 코드에서 재미있는 점은 인스턴스 변수인 `balance` 는 `private` 키워드로 선언했기때문에, `class` 외부에서 `instance.balance` 와 같은 방식으로는 접근할 수 없으며, 유저 프로그래머는 반드시 `public` 키워드로 선언된 인스턴스 메소드인 `set_balance` 를 이용하여, 값을 변경해야하므로 `set_balance` 인스턴스 메소드에 특정 조건을 걸어 유저프로그래머가 이상한 값을 넣을 수 없도록 **방어적 프로그래밍(defensive programming)** 을 할 수 있다.
+
+  ***객체지향 프로그래밍에서 잘된 정보 은닉은 필요한 인스턴스 메소드, 클래스 메소드만 공개하고 나머지는 모두 숨기는 것이다.*** 인스턴스 변수 또는 클래스 변수에 접근해야 할때는 **액세스 함수(access function)** 을 사용하여 접근하거나 변경하도록 설계해야한다. 아래의 예제에서는 `get_balance`, `set_balance` 인스턴스 메소드가 이에 해당한다.
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Account{
+public://#1
+	//생성자 : 파이썬 클래스의 __init__()과 같다
+	Account(string name, int money){
+		user = name;
+		balance = money;
+	}
+	//인스턴스 메서드(멤버 함수)
+	int get_balance() {
+		return balance;
+	}
+	//인스턴스 메서드(멤버 함수)
+	void set_balance(int money) {
+		if (money < 0) {
+			return;
+		}
+
+		balance = money;
+	}
+
+private://#2
+	//인스턴스 멤버(멤버 변수)
+	string user;
+	int balance;//#3
+};
+
+int main(void){
+	Account my_acnt("greg", 5000);
+
+	//my_acnt.balance;//#4
+
+	my_acnt.set_balance(-3000); // #5
+
+	cout << my_acnt.get_balance() << endl;
+
+	return 0;
+}
+```
+
+#### Python
+  Python에서는 아래의 **두 가지 방법으로 C++에서는 지원하는 정보은닉을 비슷하게 구현할 수 있으며(완벽하게 정보은닉을 할 수 있다는 의미는 아님) 그 두 가지를 동시에 이용할 수도 있다.**
+* **name mangling** : 숨기려는 인스턴스 변수, 인스턴스 메소드, 클래스 변수, 클래스 메소드 앞에 `__` 붙이는 방법으로 `__` 을 붙여 인스턴스 변수, 클래스 변수, 인스턴스 메소드, 클래스 메소드를 정의하면 실제로는 `__class명_메소드명 또는 변수명` 으로 클래스 외부에서만 접근할 수 있다. 클래스 내부에서는 여전히 `__` 만 붙인 것으로 접근이 가능하다.
+
+```python
+class Account:
+    def __init__(self, name, money):
+        self.__name = name
+        self.__balance = money
+        
+    def get_balance(self):
+        return self.__balance
+    
+    def set_balance(self, new_bal):
+        if new_bal < 0:
+            return
+        self.__balance = new_bal
+```
+
+```python
+my_acnt = Account(name = 'aisolab', money = 5000)
+print(my_acnt.__dict__)
+```
+
+```bash
+{'_Account__name': 'aisolab', '_Account__balance': 5000}
+```
+
+```python
+# 방어적 프로그래밍
+my_acnt.__balance = -5000
+print(my_acnt.__dict__)
+print(my_acnt._Account__balance)
+
+my_acnt.set_balance(-7000)
+print(my_acnt.__dict__)
+```
+
+```bash
+{'_Account__name': 'aisolab', '_Account__balance': 5000, '__balance': -5000}
+5000
+{'_Account__name': 'aisolab', '_Account__balance': 5000, '__balance': -5000}
+```
+
+* **property 기법** : `@property` decorator를 활용
+`@property` decorator를 이용하면, 인스턴스 변수 또는 클래스 변수를 호출하는 것 같지만 사실은 인스턴스 메소드, 클래스 메소드를 호출한다. 아래의 코드에서 유저 프로래머가 `my_acnt.balance` 로 직접 인스턴스 변수에 접근하는 것 같지만 사실은 `@property` 가 적용된 `balance` 인스턴스 메소드가 실행된 결과를 보게된다. 또한 `my_acnt.balance = -20` 과 같이 `my_acnt.balance` 가 **할당 연산자(assignment operator)** 인 `=` 를 만나서 `@balance.setter` 가 적용된 `balance` 인스턴스 메소드가 실행된다.
+
+```python
+class Account:
+    def __init__(self, name, money):
+        self.__name = name
+        self.balance = money
+
+    @property
+    def balance(self): # getter function
+        return self.get_balance()
+    
+    @balance.setter
+    def balance(self, new_bal): # setter function
+        self.set_balance(new_bal)
+    
+    def get_balance(self): # original getter function
+        return self.__balance
+    
+    def set_balance(self, new_bal): # original setter function
+        if new_bal < 0:
+            pass
+        else:
+            self.__balance = new_bal
+```
+
+```python
+my_acnt = Account(name = 'aisolab', money = 5000)
+print(my_acnt.__dict__)
+```
+
+```bash
+{'_Account__name': 'aisolab', '_Account__balance': 5000}
+```
+
+```python
+# 인스턴스 변수에 접근한 것 같지만 사실은 @property가 적용된
+# balance()가 실행되어 return 값을 본 것
+print(my_acnt.balance)
+```
+
+```bash
+5000
+```
+
+```python
+# 인스턴스 변수를 직접 수정한 것 같지만, my_acnt.balance가 = 를 만나서
+# @blance.setter가 적용된 blance()가 실행된 것 
+my_acnt.balance = -20
+print(my_acnt.get_balance())
+
+my_acnt.balance = 50
+print(my_acnt.get_balance())
+```
+
+```bash
+5000
+50
+```
 ## 5. 객체지향으로 다시 만드는 학급 성적 평가 프로그램
+**3. 절차지향으로 학습 성적 평가 프로그램 만들기** 절에서 작성한 객체지향 프로그래밍을 이용해서, 사용자 프로그램인 `main.py` script를 더 단순하게 작성할 수 있다.
+
+* `statistics.py`
+
+```python
+from functools import reduce
+import math
+
+class Stat:
+
+    def get_average(self, scores):
+        
+        avrg = reduce(lambda score1, score2 : score1 + score2, scores) / len(scores)    
+        return avrg
+
+    def get_variance(self, scores, avrg):
+        
+        tmp = 0
+        for score in scores:
+            tmp += (score - avrg)**2       
+        else:
+            var = tmp / len(scores)
+        return var
+
+    def get_std_dev(self, var):
+        
+        std_dev = round(math.sqrt(var),1)    
+        return std_dev
+```
+
+* `datahandler.py`
+
+```python
+from openpyxl import load_workbook
+from statistics import Stat
+
+class DataHandler:
+    evaluator = Stat()
+
+    @classmethod
+    def get_data_from_excel(cls, filepath):
+
+        wb = load_workbook(filename = filepath)
+        ws = wb.active
+        rows = ws.rows
+        raw_data = {name_cell.value : score_cell.value for name_cell, score_cell in rows}
+        scores = raw_data.values()
+        return scores
+
+    def __init__(self, filepath):
+        self.scores = DataHandler.get_data_from_excel(filepath = filepath)
+        self.cache = {'scores' : self.scores}
+
+    def get_average(self):
+
+        if 'average' not in self.cache.keys():
+            self.cache.update({'average' : DataHandler.evaluator.get_average(self.cache.get('scores'))})
+            return self.cache.get('average')
+        else:
+            return self.cache.get('average')
+
+    def get_variance(self):
+
+        if 'variance' not in self.cache.keys():
+            self.cache.update({'variance' : DataHandler.evaluator.get_variance(self.cache.get('scores'), self.get_average())})
+            return self.cache.get('variance')
+        else:
+            return self.cache.get('variance')
+    
+    def get_std_dev(self):
+
+        if 'std_dev' not in self.cache.keys():
+            self.cache.update({'std_dev' : DataHandler.evaluator.get_std_dev(self.get_variance())})
+            return self.cache.get('std_dev')
+        else:
+            return self.cache.get('std_dev')
+
+    def evaluate_class(self, total_avrg, total_std_dev):
+        avrg = self.get_average()
+        var = self.get_variance()
+        std_dev = self.get_std_dev()
+        
+        print("평균:{}, 분산:{}, 표준편차:{}".format(avrg, var, std_dev))
+        if avrg < total_avrg and std_dev > total_std_dev:
+            print('성적이 너무 저조하고 학생들의 실력 차이가 너무 크다.')
+        elif avrg > total_avrg and std_dev > total_std_dev:
+            print('성적은 평균 이상이지만 학생들의 실력 차이가 크다. 주의 요망!')
+        elif avrg < total_avrg and std_dev < total_std_dev:
+            print('학생들의 실력 차이는 크지 않지만 성적이 너무 저조하다. 주의 요망!')
+        elif avrg > total_avrg and std_dev < total_std_dev:
+            print('성적도 평균 이상이고 학생들의 실력 차이도 크지 않다.')
+```
+
+* `main.py`
+
+```python
+from datahandler import DataHandler
+import argparse 
+parser = argparse.ArgumentParser(prog = '평가프로그램',
+                                 description = '엑셀에 저장된 학생들의 점수를 가져와 평균과 표준편차를 구하고, 학년 전체 평균과 비교하는 프로그램')
+parser.add_argument('filepath', type = str, help = '엑셀파일 저장경로')
+parser.add_argument('total_avrg', type = float, help = '학년평균')
+parser.add_argument('total_std_dev', type = float, help = '학년표준편차')
+args = parser.parse_args()
+
+def main():
+    datahandler = DataHandler(filepath = args.filepath)
+    datahandler.evaluate_class(total_avrg = args.total_avrg, total_std_dev = args.total_std_dev)
+
+if __name__ == '__main__':
+    main()
+```
+
+유저 프로그램인 `main.py` script를 실행시키면 아래와 같다.
+
+```bash
+$ python main.py --help
+```
+
+```bash
+usage: 평가프로그램 [-h] filepath total_avrg total_std_dev
+
+엑셀에 저장된 학생들의 점수를 가져와 평균과 표준편차를 구하고, 학년 전체 평균과 비교하는 프로그램
+
+positional arguments:
+  filepath       엑셀파일 저장경로
+  total_avrg     학년평균
+  total_std_dev  학년표준편차
+
+optional arguments:
+  -h, --help     show this help message and exit
+```
+
+```bash
+$ python main.py ./class_1.xlsx 50 25
+```
+
+```bash
+평균:51.5, 분산:1240.25, 표준편차:35.2
+성적은 평균 이상이지만 학생들의 실력 차이가 크다. 주의 요망!
+```
