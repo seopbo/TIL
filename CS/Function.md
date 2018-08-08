@@ -310,7 +310,7 @@ x : 10 in main
 
 ```python
 def func(li):
-    li[0] = 'Talk is cheap. Show me thoe code.'
+    li[0] = 'Talk is cheap. Show me the code.'
     print('{} in function'.format(li))
     
 if __name__ == '__main__':
@@ -320,6 +320,6 @@ if __name__ == '__main__':
 ```
 
 ```bash
-['Talk is cheap. Show me thoe code.', 1, 2, 3] in function
-['Talk is cheap. Show me thoe code.', 1, 2, 3] in main
+['Talk is cheap. Show me the code.', 1, 2, 3] in function
+['Talk is cheap. Show me the code.', 1, 2, 3] in main
 ```
