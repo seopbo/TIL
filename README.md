@@ -36,6 +36,7 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [How to use functional programming.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20functional%20programming.md)
 * [How to use argparse module.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20argparse%20module.md)
 * [How to use class method and static method.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20use%20class%20method%20and%20static%20method.md)
+* [How to implement information hiding.md](https://github.com/aisolab/TIL/blob/master/Python/How%20to%20implement%20information%20hiding.md)
 
 ### Tensorflow
 * [How to simply use tf.data.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20simply%20use%20tf.data.ipynb)
