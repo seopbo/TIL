@@ -5,7 +5,7 @@ Python에서 **객체지향 프로그래밍(object-oriented programming, oop)** 
 	+ <https://hashcode.co.kr/questions/383/%EC%9D%B4%EB%A6%84-%EC%95%9E%EC%97%90-_%EB%B0%91%EC%A4%84%EC%B3%90%EC%A0%B8-%EC%9E%88%EB%8A%94-%EA%B0%9D%EC%B2%B4%EB%8A%94-%EB%AD%94%EA%B0%80%EC%9A%94> 
 
 ### Summary
-* * **`_` 를 사용** 
+* **`_` 를 사용** 
   + class variable, class method, instance variable, instance method 등을 정의 시, `_` 를 variable명 또는 method명에 붙여 정의함으로써 private임을 명시,**프로그래머 간에 수정하지않는 variable 또는 method라고 약속, class 외부에서 접근하기 힘들게함**
 * **name mangling**
   + class variable, class method, instance variable, instance method 등을 정의 시, `__` 를 variable명 또는 method명에 붙여 정의
