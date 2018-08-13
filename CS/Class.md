@@ -245,4 +245,160 @@ time to die
 * 코드 재사용을 위해 공통 부분을 부모 클래스로 묶는다. 
 * 부모 클래스가 추상 클래스인 경우를 제외하고, 자식 클래스에서 부모 클래스의 여러 메소드를 메소드 오버라이딩한다면 자식 클래스를 만들지 않는 것이 좋다.
 
+예를 들어, 게임 세계의 Character와 Monster들을 클래스 계층적 구조로 아래와 섹션에서 소개하는 것들과 같이 구현할 수 있다.
+
+### 3.1 Character 클래스 만들기
+**추상 클래스(abstract class)** 로 `Character` 클래스를 구현하고, 해당 클래스를 이후 섹션에서 구현할 `Player` 클래스와 `Monster` 클래스가 상속
+
+```python
+from abc import ABCMeta, abstractmethod
+
+# 자식 클래스가 상속 받을 추상 클래스
+class Character(metaclass = ABCMeta):
+    def __init__(self, name, hp, power):
+        self.name = name
+        self.hp = hp
+        self.power = power
+
+    # abstact method에서 거의 함수 signature를 정의함
+    # abstract instance method를 상속받는 자식클래스는 무조건 method overriding으로 재정의해야함
+    @abstractmethod 
+    def attack(self, other, attackkind):
+        pass
+
+    @abstractmethod
+    def get_damage(self, power, attackkind):
+        pass
+
+    def __str__(self):
+        return '{} : {}'.format(self.name, self.hp)
+```
+
+### 3.2 Player 클래스 만들기
+`Player` 클래스는 추상 클래스인 `Character` 클래스를 상속받아서 아래와 같이 구현
+
+```python
+class Player(Character):
+    def __init__(self,name = 'player', hp = 100, power = 50, *skills):
+        super().__init__(name, hp, power)
+        self.skills = list(skills)
+
+    def attack(self, monster, attackkind): #
+        '''
+        만약 attackkind가 skills에 있다면 monster 공격
+        message passing으로 구현
+        '''
+        if attackkind in self.skills:
+            monster.get_damage(power = self.power, attackkind = attackkind)
+        else:
+            return
+    
+    def get_damage(self, power, attackkind):
+        '''
+        monster의 attackkind가 플레이어의 skills 목록에 있으면 power // 2 만큼 데미지를 입는다.
+        아니면 그대로 hp -= power
+        '''
+        if attackkind in self.skills:
+            self.hp -= power // 2
+        else:
+            self.hp -= power 
+```
+
+### 3.3 Monster, IceMonster, FireMonster 클래스 만들기
+`Monster` 클래스는 추상 클래스인 `Character` 클래스를 상속하고, `IceMonster` , `FireMonster` 클래스는 `Monster` 클래스를 상속
+
+```python
+'''
+몬스터
+attack -> 몬스터의 attackkind가 player의 attackkind와 같으면 공격 아니면 공격안함
+get_damage -> 만약 'ICE' 공격을 받았는데 나의 self.attackkind = 'ICE' -> skdml self.hp += power
+           -> 그게 아니면 나의 self.hp -= power
+'''
+
+class Monster(Character):    
+    def __init__(self, name, hp, power):
+        super().__init__(name, hp, power)
+        self.attackkind = self.__class__.__name__.replace('Monster', '')
+
+
+    def attack(self, player, attackkind):
+        if self.attackkind == attackkind:
+            player.get_damage(power = self.power, attackkind = self.attackkind)
+        else:
+            return
+
+    def get_damage(self, power, attackkind):
+        if self.attackkind == attackkind:
+            self.hp += power
+        else:
+            self.hp -= power
+
+class IceMonster(Monster):
+    pass
+
+class FireMonster(Monster):
+    pass
+```
+
+위의 각각의 클래스에 대한 구현들이 잘 구현되었는 지 아래의 코드를 통해서 확인할 수 있다.
+
+```python
+player = Player('aisolab', 100, 50, 'Fire','Ice')
+monsters = [IceMonster(name = 'IceMonster', hp = 100, power = 30),
+            FireMonster(name = 'FireMonster', hp = 150, power = 50)]
+
+for monster in monsters:
+    print(monster)
+```
+
+```bash
+IceMonster : 100
+FireMonster : 150
+```
+
+```python
+for monster in monsters:
+    player.attack(monster, 'Fire')
+for monster in monsters:
+    print(monster)
+```
+
+```bash
+IceMonster : 50
+FireMonster : 200
+```
+
 ## 4. 연산자 오버로딩
+**연산자 오버로딩(operator overloading)** 은 클래스안에서 메소드로 **연산자(operator)** 를 새롭게 구현하는 것으로 다형성의 특별한 형태이다. Python에서는 클래스를 정의할 때, ***산술 연산자와 논리 연산자 등 다양한 연산자들을 메소드 오버라이딩하여 재정의하면 된다.*** 예를 들어 Python에서 `__add__` 메소드에 대해서 메소드오버라이딩을 하면 `+` operator로 인스턴스간의 연산을 할 수 있다.
+
+```python
+class Point:
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+    
+    def __add__(self, other):
+        return Point(self._x + other._x, self._y + other._y)
+    
+    def __str__(self):
+        return '({}, {})'.format(self._x, self._y)
+```
+
+```python
+p1 = Point(1,2)
+p2 = Point(3,4)
+print(p1, p2)
+```
+
+```bash
+(1, 2) (3, 4)
+```
+
+```python
+p3 = p1 + p2
+print(p3)
+```
+
+```bash
+(4, 6)
+```
