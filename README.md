@@ -44,5 +44,6 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 ### Tensorflow
 * [How to simply use tf.data.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20simply%20use%20tf.data.ipynb)
 * [How to implement reusing variables.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20implement%20reusing%20variables.ipynb)
+* [How to use TFRecord format.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20use%20TFRecord%20format.ipynb)
 
 ### Javascript
