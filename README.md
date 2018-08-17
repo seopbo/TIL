@@ -30,7 +30,7 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [HTML intermediates.md](https://github.com/aisolab/TIL/blob/master/HTML-CSS/HTML_intermediates.md)
 
 ### Linux
-* [Package manger.md](https://github.com/aisolab/TIL/blob/master/Linux/Package%20manager.md)
+* [Package manager.md](https://github.com/aisolab/TIL/blob/master/Linux/Package%20manager.md)
 
 ### Python
 * [What is first-class function.md](https://github.com/aisolab/TIL/blob/master/Python/What%20is%20first-class%20function.md)
