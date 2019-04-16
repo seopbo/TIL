@@ -1,5 +1,5 @@
 # Clean code in Python
-본 내용은 **파이썬 클린코드 (유지보수가 쉬운 파이썬 코드를 만드는 비결)**를 읽고 간략하게 내용을 정리한 것입니다.
+본 내용은 **파이썬 클린코드 (유지보수가 쉬운 파이썬 코드를 만드는 비결)** 를 읽고 간략하게 내용을 정리한 것입니다.
 * link : https://github.com/rmariano/Clean-code-in-Python/tree/master/book/src/ch01
 ## Chapter01 소개, 코드 포매팅과 도구
 이 장에서 다루는 주제는 다음과 같다.
