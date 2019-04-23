@@ -19,8 +19,6 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [Object-oriented programming.md](https://github.com/aisolab/TIL/blob/master/CS/Object-oriented%20programming.md)
 * [Class.md](https://github.com/aisolab/TIL/blob/master/CS/Class.md)
 
-### Django
-
 ### Git
 * [Git_basics.md](https://github.com/aisolab/TIL/blob/master/Git/Git_basics.md)
 * [Git_github.md](https://github.com/aisolab/TIL/blob/master/Git/Git_github.md)
@@ -51,4 +49,5 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [How to use pre-trained models.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20use%20pre-trained%20models.ipynb)
 * [How to implement data augmentation.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20implement%20data%20augmentation.ipynb)
 
-### C++
+### Clean code
+* [CC01_Introduction, Tools and Formatting.md](https://github.com/aisolab/TIL/blob/master/Clean_code/CC01_Introduction%2C%20Tools%20and%20Formatting.md) 
