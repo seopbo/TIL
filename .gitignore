@@ -6,3 +6,6 @@
 
 # .tfrecords in mac
 *.tfrecords
+
+# added PyCharm project file
+.idea
