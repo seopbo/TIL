@@ -50,4 +50,12 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 * [How to implement data augmentation.ipynb](https://nbviewer.jupyter.org/github/aisolab/TIL/blob/master/Tensorflow/How%20to%20implement%20data%20augmentation.ipynb)
 
 ### Clean code
-* [CC01_Introduction, Tools and Formatting.md](https://github.com/aisolab/TIL/blob/master/Clean_code/CC01_Introduction%2C%20Tools%20and%20Formatting.md) 
+* [CC01_Introduction, Tools and Formatting.md](https://github.com/aisolab/TIL/blob/master/Clean_code/CC01_Introduction%2C%20Tools%20and%20Formatting.md)
+
+### Data structure
+
+
+### Algorithm
+* [bubble_sort.py](https://github.com/aisolab/TIL/blob/master/Algorithm/bubble_sort.py)
+* [selection_sort.py](https://github.com/aisolab/TIL/blob/master/Algorithm/selection_sort.py)
+
