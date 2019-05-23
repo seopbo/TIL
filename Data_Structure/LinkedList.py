@@ -36,17 +36,13 @@ class LinkedList:
 
             footprint._next = Node(data)
 
-    def delete_node(self, key):
-
-        # if self._head._data == key:
-        #     self._head = self._head._next
-        #     return
+    def delete_node_with_key(self, key):
 
         footprint = self._head
 
         if footprint._data == key:
             self._head = footprint._next
-            footprint = None
+            # footprint = None
             return
 
         while footprint._next:
@@ -57,10 +53,30 @@ class LinkedList:
                 else:
                     footprint._next = None
                     break
-
+            else:
                 footprint = footprint._next
 
-        footprint = None
+        # footprint = None
+
+    def delete_node_with_position(self, position):
+
+        footprint = self._head
+        node_index = 0
+
+        if node_index == position:
+            self._head = footprint._next
+            # footprint = None
+            return
+
+        while footprint._next:
+            if (node_index + 1) == position:
+                footprint._next = footprint._next._next
+                break
+            else:
+                node_index += 1
+                footprint = footprint._next
+
+        # footprint = None
 
     def traverse(self):
         footprint = self._head
@@ -76,6 +92,6 @@ li.append(2)
 li.append(3)
 li.traverse()
 
-li.delete_node(3)
-li.traverse()
 
+li.delete_node_with_position(1)
+li.traverse()
