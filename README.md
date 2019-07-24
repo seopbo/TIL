@@ -58,4 +58,4 @@ Aisolab이 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. 
 ### Algorithm
 * [bubble_sort.py](https://github.com/aisolab/TIL/blob/master/Algorithm/bubble_sort.py)
 * [selection_sort.py](https://github.com/aisolab/TIL/blob/master/Algorithm/selection_sort.py)
-
+* [quick_sort.py](https://github.com/aisolab/TIL/blob/master/Algorithm/quick_sort.py)
