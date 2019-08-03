@@ -1,3 +1,8 @@
+"""
+    Source code from Computer Science Bootcamp
+"""
+
+
 class Node:
     def __init__(self, data):
         self._data = data
