@@ -1,3 +1,8 @@
+"""
+    Source code from Computer Science Bootcamp
+"""
+
+
 class Stack:
     def __init__(self):
         self._container = []
