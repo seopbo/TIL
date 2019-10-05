@@ -1,23 +1,27 @@
-"""
-    Source code from Computer Science Bootcamp
-"""
-
-
 class Stack:
     def __init__(self):
-        self._container = []
+        self._items = []
 
-    def push(self, data):
-        self._container.append(data)
+    def is_empty(self):
+        return not self._items
+
+    def push(self, value):
+        self._items.append(value)
 
     def pop(self):
-        return self._container.pop()
-
-    def empty(self):
-        if not self._container:
-            return True
+        if not self.is_empty():
+            return self._items.pop()
         else:
-            return False
+            print("Stack is empty.")
+
+    def size(self):
+        return len(self._items)
 
     def peek(self):
-        return self._container[-1]
+        if not self.is_empty():
+            return self._items[-1]
+        else:
+            print("Stack is empty.")
+
+    def __repr__(self):
+        return repr(self._items)
